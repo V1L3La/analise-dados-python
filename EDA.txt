@@ -1,0 +1,86 @@
+                                          PORTIFÓLIO de INSIGHTS
+==================================
+KAGGLE: SABER SOBRE OS DADOS
+
+==================================
+RESOLVER PROBLEMAS REAIS
+-Quais problemas?
+-Causa raiz desse problema
+-Levantar hipóteses sobre o comportamento do negócio
+==================================
+>> Questoes de negócio 
+>> Entendimento do negócio 
+>> coleta e limpeza de dados  
+>> Exploração de dados  (Validar as hipóteses)
+>> Escrever insights e proposta para solução do problema
+==================================
+readme formata: https://towardsdatascience.com/cheat-sheet-for-google-colab-63853778c093/
+                              http://cursos.leg.ufpr.br/prr/capMarkdown.html
+Obs: cada célula um comentário
+==================================
+
+
+==================================
+nomenclatura:      df_nome_tratamento    OU nome abreviado
+==================================
+                  
+
+ENTENDENDO A BASE  
+knowledge:  https://github.com/V1L3La/Learning-An-lise-de-Dados-em-Python/blob/main/C%C3%B3pia_de_knowledge.ipynb
+
+Carregar os dados
+.info()
+
+.head()         .head().T
+.sample()
+.tail()
+
+.shape       igm[['municipio']].shape
+.dtypes
+
+ .describe()
+        Converter tipos:  df['price'] = df['price'].astype(int)
+ .describe(include='object')      informações categóricas(texto)
+       Top=mais frequente    Freq=quantas vezes o top está repetindo
+
+
+  .isnull().sum()     retorna o número de valores ausentes para cada coluna.
+  .isnull().sum().sum()    retorna o número total de valores ausentes
+  .isna().mean()    porcentagem de valores que estão faltando
+  .fillna(value=10)  substituir valores de NaN por um escalar
+
+.columns
+.nunique()    quantos valores únicos existem para cada coluna
+df['nome']     Ver uma coluna
+igm[['municipio', 'indice_governanca']]       Ver várias colunas
+df['regiao'].value_counts()
+valores unicos  em cada categoria dentro de cada coluna
+Renomeando o nome colunas do DataFrame
+Renomeando o nome das categorias dentro de cada coluna do DataFrame
+
+Visualização:
+sns.swarmplot(x="regiao", y="indice_governanca", hue='porte', data=igm)  
+
+
+TRATAMENTO
+
+2- Limpeza de dados(Data cleaning)
+"Não se apresse nessa fase"
+
+-Duplicados
+-Ausentes[preencher{para categóricos rotular como "ausente"}{para numéricos rotular como "0"} ou eliminar]
+-Em branco
+-Espaço em branco
+-Conversão
+-Outliers indesejados[com valores discrepantes],
+-Padronizar[Ex. DOG, CAT, Cachorro, Gato, cachorro, gato] [erros de digitação]
+-Irrelevantes[Não se usa]
+
+Objetivos: Integridade dos dados, Exatidão dos dados, Precisão dos dados e Relevância dos dados.
+
+
+
+
+
+
+
