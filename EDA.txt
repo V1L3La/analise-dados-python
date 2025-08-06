@@ -1,12 +1,12 @@
-                                          PORTIFÓLIO de INSIGHTS
+                             PORTIFÓLIO de INSIGHTS  (ANALISTA DE PROBLEMA/DOR)
 ==================================
 KAGGLE: SABER SOBRE OS DADOS
-
+   -Criar um(s) problema(s)
 ==================================
 RESOLVER PROBLEMAS REAIS
 -Quais problemas?
--Causa raiz desse problema
--Levantar hipóteses sobre o comportamento do negócio
+-Causa raiz desse problema?  (Exploração de dAdos EXPLANATÓRIA)
+    >> Levantar hipóteses sobre o comportamento do negócio
 ==================================
 >> Questoes de negócio 
 >> Entendimento do negócio 
@@ -21,11 +21,15 @@ Obs: cada célula um comentário
 
 
 ==================================
-nomenclatura:      df_nome_tratamento    OU nome abreviado
+nomenclatura d:      df_nome_tratamento    OU nome abreviado
 ==================================
-                  
 
-ENTENDENDO A BASE  
+>>>>>>>>>>> PROCURAR COMPORTAMENTOS PARA RESPONDER OS PROBLEMAS
+
+
+
+
+>>>>>>>>>>> ENTENDENDO A BASE  
 knowledge:  https://github.com/V1L3La/Learning-An-lise-de-Dados-em-Python/blob/main/C%C3%B3pia_de_knowledge.ipynb
 
 Carregar os dados
@@ -62,7 +66,7 @@ Visualização:
 sns.swarmplot(x="regiao", y="indice_governanca", hue='porte', data=igm)  
 
 
-TRATAMENTO
+>>>>>>>>>>> TRATAMENTO
 
 2- Limpeza de dados(Data cleaning)
 "Não se apresse nessa fase"
