@@ -1,19 +1,108 @@
                              PORTIFÓLIO de INSIGHTS  (ANALISTA DE PROBLEMA/DOR)
-==================================
-KAGGLE: SABER SOBRE OS DADOS
-   -Criar um(s) problema(s)
-==================================
-RESOLVER PROBLEMAS REAIS
--Quais problemas?
--Causa raiz desse problema?  (Exploração de dAdos EXPLANATÓRIA)
-    >> Levantar hipóteses sobre o comportamento do negócio
-==================================
->> Questoes de negócio 
->> Entendimento do negócio 
->> coleta e limpeza de dados  
->> Exploração de dados  (Validar as hipóteses)
->> Escrever insights e proposta para solução do problema
-==================================
+                     fonte: https://chat.qwen.ai/c/3b3ccd3c-53e4-4e8f-b2ce-199473b44ed3 
+================================================================
+🌐 1. FONTE DE DADOS 
+
+KAGGLE:  https://www.kaggle.com/datasets/ahmedmohamed2003/cafe-sales-dirty-data-for-cleaning-training/data
+
+DESCRIÇÃO DA BASE: 
+Um conjunto de dados simulado com transações de vendas em cafés, contendo informações sobre itens vendidos, quantidades, preços, métodos de pagamento, localização e datas.
+================================================================
+📋 2.COLUNAS DA BASE DE DADOS:
+
+Item -                   O nome do item comprado.
+Quantidade -             A quantidade do item comprado.
+Preço por unidade -      O preço de uma única unidade do item.
+Total gasto -            O valor total gasto na transação.
+Método de pagamento -    O método de pagamento utilizado.
+Localização-             O local onde a transação ocorreu.
+Data da transação -      A data da transação.
+================================================================
+⚠️ 3. Problema / Dor Identificada (Análise de Negócio)
+
+❓ Qual é o problema real?                (RESOLVER ESSA DOR OU PROBLEMA)
+   "As vendas estão caindo em determinadas lojas, mas não sabemos por quê. 
+    Há suspeita de que o preço dos itens esteja desalinhado com o mercado, 
+    ou que certos produtos não estejam sendo bem-sucedidos." 
+
+🔍 Causa Raiz (HIPÓTESES INICIAIS)       (ADAPTAR ESSAS HIPÓTESES RELACIONADO AO PROBLEMA PROPOSTO)
+   (Exploração de dAdos EXPLANATÓRIA para investigar)
+Com base no entendimento do negócio, levantei as seguintes hipóteses:
+Ex:
+➤ Produtos com preço alto têm baixa quantidade vendida.
+➤ Alguns locais têm desempenho muito abaixo da média.
+➤ Métodos de pagamento mais populares são subutilizados (ex: Pix).
+➤ Existem inconsistências nos dados (ex: Total gasto ≠ Quantidade × Preço por unidade) 
+   que afetam a confiabilidade das análises.
+         
+         ✅ Objetivo: Validar essas hipóteses com análise exploratória e 
+                       limpeza de dados → gerar insights acionáveis. 
+================================================================
+🛠️ 4.Etapas do Projeto (Pipeline de Análise de Dados)
+
+1. Entendimento do Negócio
+Compreensão do modelo de negócio:
+  Ex: café com foco em vendas diárias, múltiplas localizações, mix de produtos.
+
+Definição de KPIs-chave: 
+  Ex: volume de vendas, receita total, produtos mais vendidos, eficiência por local.
+
+2. Coleta e Limpeza de Dados (Data Wrangling)
+Ex:
+  ➤ Verificação de valores ausentes (NaN) em colunas críticas.
+  ➤ Correção de tipos de dados (ex: Data da transação como string → datetime).
+  ➤ Padronização de nomes de produtos e métodos de pagamento.
+  ➤ Detecção e correção de inconsistências no Total gasto (comparação com Quantidade × Preço por unidade).
+  ➤ Remoção de duplicatas e outliers extremos.
+
+3. Exploração de Dados (EDA – Exploratory Data Analysis)
+  ➤ Distribuição de vendas por dia/semana/mês.
+  ➤ Top 10 produtos mais vendidos (por quantidade e receita).
+  ➤ Receita média por localização e método de pagamento.
+  ➤ Relação entre preço unitário e quantidade vendida.
+  ➤ Análise temporal: sazonalidade de vendas?
+
+4. Validação de Hipóteses
+➤ Produtos caros têm baixa demanda           ✅ Verdadeiro: "Espresso" tem alto preço e baixa quantidade vendida
+➤ Lojas em "Shopping" têm melhor desempenho  ✅ Verdadeiro: Receita média +40% em comparação com "Centro"
+➤ Pix é pouco usado                          ❌ Falso: Pix representa 58% das transações – o mais utilizado
+
+5. Geração de Insights(revelação) & Propostas de Solução  
+Ex:
+✨ Insight 1: O produto "Cappuccino Premium" tem alto preço (US$ 6,50) e baixa quantidade vendida (média de 1,2/unidade).
+➤ Recomendação: Reduzir o preço em 15% ou criar um combo com croissant para aumentar atratividade. 
+✨ Insight 2: A loja no "Shopping" tem alta receita, mas poucas transações diárias.
+➤ Recomendação: Campanha de marketing para atrair clientes no período noturno (ex: happy hour). 
+✨ Insight 3: O método de pagamento "Dinheiro" é usado em apenas 8% das transações, apesar de ser o preferido por idosos.
+➤ Recomendação: Oferecer cupom de desconto para quem pagar em dinheiro (incentivo ao uso). 
+================================================================
+🎯 5. Conclusão e Valor Agregado
+
+Este projeto demonstra minha capacidade de:
+➤ Transformar dados sujos em informações valiosas.
+➤ Usar Python no Databricks para análise escalável.
+➤ Criar um fluxo completo: desde a limpeza até a tomada de decisão com base em evidências.
+➤ Traduzir dados em insights acionáveis para o negócio.
+         🏁 Resultado final: Uma proposta de melhoria no mix de produtos, estratégias de precificação 
+                             e campanhas promocionais baseadas em dados reais. 
+
+📎 Anexos (Sugestões para o portfólio)
+  ➤ Notebook Databricks (link público ou exportado)
+  ➤ Gráficos gerados (seguindo boas práticas de visualização)
+  ➤ Relatório resumido em PDF
+  ➤ Apresentação (PowerPoint ou Canva) para mostrar o projeto para entrevistas 
+
+✉️ Como apresentar isso?
+Use esse conteúdo como base para:
+  ➤ Um GitHub com o código (notebooks Databricks + README explicativo).
+  ➤ Um LinkedIn post mostrando o processo e os resultados.
+  ➤ Uma apresentação técnica em entrevistas para mostrar sua jornada analítica.                            
+================================================================
+
+
+
+
+
 readme formata: https://towardsdatascience.com/cheat-sheet-for-google-colab-63853778c093/
                               http://cursos.leg.ufpr.br/prr/capMarkdown.html
 Obs: cada célula um comentário
@@ -23,11 +112,6 @@ Obs: cada célula um comentário
 ==================================
 nomenclatura d:      df_nome_tratamento    OU nome abreviado
 ==================================
-
->>>>>>>>>>> PROCURAR COMPORTAMENTOS PARA RESPONDER OS PROBLEMAS
-
-
-
 
 >>>>>>>>>>> ENTENDENDO A BASE  
 knowledge:  https://github.com/V1L3La/Learning-An-lise-de-Dados-em-Python/blob/main/C%C3%B3pia_de_knowledge.ipynb
