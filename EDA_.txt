@@ -102,7 +102,7 @@ Use esse conteúdo como base para:
 
 
 
-
+================================================================
 readme formata: https://towardsdatascience.com/cheat-sheet-for-google-colab-63853778c093/
                               http://cursos.leg.ufpr.br/prr/capMarkdown.html
 Obs: cada célula um comentário
