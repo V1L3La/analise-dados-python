@@ -1,13 +1,13 @@
                              PORTIFÓLIO de INSIGHTS  (ANALISTA DE PROBLEMA/DOR)
                      fonte: https://chat.qwen.ai/c/3b3ccd3c-53e4-4e8f-b2ce-199473b44ed3 
-================================================================
+=====================================================================================
 🌐 1. FONTE DE DADOS 
 
 KAGGLE:  https://www.kaggle.com/datasets/ahmedmohamed2003/cafe-sales-dirty-data-for-cleaning-training/data
 
 DESCRIÇÃO DA BASE: 
 Um conjunto de dados simulado com transações de vendas em cafés, contendo informações sobre itens vendidos, quantidades, preços, métodos de pagamento, localização e datas.
-================================================================
+
 📋 2.COLUNAS DA BASE DE DADOS:
 
 Item -                   O nome do item comprado.
@@ -17,7 +17,7 @@ Total gasto -            O valor total gasto na transação.
 Método de pagamento -    O método de pagamento utilizado.
 Localização-             O local onde a transação ocorreu.
 Data da transação -      A data da transação.
-================================================================
+=====================================================================================
 ⚠️ 3. Problema / Dor Identificada (Análise de Negócio)
 
 ❓ Qual é o problema real?                (RESOLVER ESSA DOR OU PROBLEMA)
@@ -37,15 +37,37 @@ Ex:
          
          ✅ Objetivo: Validar essas hipóteses com análise exploratória e 
                        limpeza de dados → gerar insights acionáveis. 
-================================================================
-🛠️ 4.Etapas do Projeto (Pipeline de Análise de Dados)
+=====================================================================================
+🛠️ 4.Entendimento do Negócio
 
 1. Entendimento do Negócio
-Compreensão do modelo de negócio:
-  Ex: café com foco em vendas diárias, múltiplas localizações, mix de produtos.
 
-Definição de KPIs-chave: 
-  Ex: volume de vendas, receita total, produtos mais vendidos, eficiência por local.
+🔍 Contexto Empresarial
+   O cenário é o de uma rede de cafés com múltiplas unidades distribuídas em diferentes localizações (centro urbano, bairros residenciais, shoppings). O modelo de negócio se baseia em:
+➤ Vendas diárias de produtos com margens variáveis.
+➤ Alta rotatividade de clientes em horários específicos (manhã, tarde).
+➤ Diversificação de ofertas: bebidas, pães, lanches, combos.
+➤ Uso de múltiplos canais de pagamento (dinheiro, cartão ), com tendência crescente para meios digitais.
+
+📈 Metas Estratégicas do Negócio
+Com base nesse contexto, identifiquei as seguintes metas operacionais e comerciais:
+➤ Aumentar a receita média por loja (sem aumentar custos fixos).
+➤ Melhorar a performance de produtos com baixa rotação.
+➤ Otimizar o mix de produtos com base no comportamento do cliente.
+➤ Aumentar a adesão a métodos de pagamento digitais (Pix, cartão) para reduzir risco de perda de dinheiro em caixa.
+➤ Reduzir desperdícios e melhorar a gestão de estoque (indiretamente impactado pela previsibilidade de vendas).
+
+🧩 Problema Central (Negócio vs. Dados)
+Apesar de haver dados de transações, há falta de visibilidade clara sobre:
+➤ Quais produtos realmente geram lucro líquido (considerando custo de produção)?
+➤ Qual localização tem maior potencial de crescimento?
+➤ Por que certos produtos têm baixa demanda mesmo com preço competitivo?
+👉 Isso gera decisões baseadas em intuição, não em dados — o que pode levar a:
+➤ Sobrecarga de estoque em produtos pouco vendidos.
+➤ Preços desalinhados com a percepção do cliente.
+➤ Falta de foco em promoções eficazes.
+
+
 
 2. Coleta e Limpeza de Dados (Data Wrangling)
 Ex:
@@ -75,7 +97,7 @@ Ex:
 ➤ Recomendação: Campanha de marketing para atrair clientes no período noturno (ex: happy hour). 
 ✨ Insight 3: O método de pagamento "Dinheiro" é usado em apenas 8% das transações, apesar de ser o preferido por idosos.
 ➤ Recomendação: Oferecer cupom de desconto para quem pagar em dinheiro (incentivo ao uso). 
-================================================================
+=====================================================================================
 🎯 5. Conclusão e Valor Agregado
 
 Este projeto demonstra minha capacidade de:
@@ -97,79 +119,130 @@ Use esse conteúdo como base para:
   ➤ Um GitHub com o código (notebooks Databricks + README explicativo).
   ➤ Um LinkedIn post mostrando o processo e os resultados.
   ➤ Uma apresentação técnica em entrevistas para mostrar sua jornada analítica.                            
-================================================================
+=====================================================================================
 
 
 
+=====================================================================================
+Readme formatado: 
+https://towardsdatascience.com/cheat-sheet-for-google-colab-63853778c093/
+      Markdown: http://cursos.leg.ufpr.br/prr/capMarkdown.html
 
-================================================================
-readme formata: https://towardsdatascience.com/cheat-sheet-for-google-colab-63853778c093/
-                              http://cursos.leg.ufpr.br/prr/capMarkdown.html
+- **Base de conhecimento:** [Link para o notebook](https://github.com/V1L3La/Learning-An-lise-de-Dados-em-Python/blob/main/C%C3%B3pia_de_knowledge.ipynb) 
+
 Obs: cada célula um comentário
-==================================
+=====================================================================================
 
 
-==================================
-nomenclatura d:      df_nome_tratamento    OU nome abreviado
-==================================
-
->>>>>>>>>>> ENTENDENDO A BASE  
-knowledge:  https://github.com/V1L3La/Learning-An-lise-de-Dados-em-Python/blob/main/C%C3%B3pia_de_knowledge.ipynb
-
-Carregar os dados
-.info()
-
-.head()         .head().T
-.sample()
-.tail()
-
-.shape       igm[['municipio']].shape
-.dtypes
-
- .describe()
-        Converter tipos:  df['price'] = df['price'].astype(int)
- .describe(include='object')      informações categóricas(texto)
-       Top=mais frequente    Freq=quantas vezes o top está repetindo
-
-(no dataframe)
-  .isnull().sum()     retorna o número de valores ausentes para cada coluna.
-  .isnull().sum().sum()    retorna o número total de valores ausentes
-  .isna().mean()    porcentagem de valores que estão faltando
-  .fillna(value=10)  substituir valores de NaN por um escalar
-
-(Na coluna)
-.columns
-.unique()      Quais valores únicos numa coluna
-.nunique()    quantos valores únicos existem numa coluna
-df[df.isnull().any(axis=1)]      quais linhas estão como NaN (dados ausentes): 
-                                                   Tratar com: (Categóricos) -  moda, "Não informado","Desconhecido"
-                                                   (Contínuos) -      média, mediana(P outliers), 0
-df['nome']     Ver uma coluna
-igm[['municipio', 'indice_governanca']]       Ver várias colunas
-df['regiao'].value_counts()
-valores unicos  em cada categoria dentro de cada coluna
-Renomeando o nome colunas do DataFrame
-Renomeando o nome das categorias dentro de cada coluna do DataFrame
-
-Visualização:
-sns.swarmplot(x="regiao", y="indice_governanca", hue='porte', data=igm)  
 
 
->>>>>>>>>>> TRATAMENTO
+# Processo Completo de Análise de Dados com Python
 
-2- Limpeza de dados(Data cleaning)
-"Não se apresse nessa fase"
+## **Criação do Projeto Localmente**
+- **Nomenclatura:** `df_nome_tratamento` ou nome abreviado
 
--Duplicados
--Ausentes[preencher{para categóricos rotular como "ausente"}{para numéricos rotular como "0"} ou eliminar]
--Em branco
--Espaço em branco
--Conversão
--Outliers indesejados[com valores discrepantes],
--Padronizar[Ex. DOG, CAT, Cachorro, Gato, cachorro, gato] [erros de digitação]
--Irrelevantes[Não se usa]
 
-Objetivos: Integridade dos dados, Exatidão dos dados, Precisão dos dados e Relevância dos dados.
+## **1. Coleta de Dados**
+**Ferramentas e métodos:**
+- Carregamento de dados via CSV, Excel, APIs
+- Exemplos: `pd.read_csv()`, `pd.read_excel()`, `requests.get()`
+- Todos Carregamentos: (https://chat.qwen.ai/c/3008c6af-663b-4e34-9c1c-7f09485adcf6)
+
+## **2. Exploração Inicial (EDA - Exploratory Data Analysis)**
+**Ferramentas de Inspeção:**
+- `.info()` - Informações gerais sobre o dataset
+- `.head()` e `.tail()` - Visualização das primeiras/últimas linhas
+- `.sample()` - Amostra aleatória de dados
+- `.shape` - Dimensões do dataframe
+- `.dtypes` - Tipos de dados das colunas
+- `.columns` - Nomes das colunas
+
+**Análise Descritiva:**
+- `.describe()` - Estatísticas descritivas básicas
+- `.describe(include='object')` - Estatísticas para colunas categóricas
+
+**Análise de Qualidade dos Dados:**
+- **Valores nulos:** 
+  - `.isnull().sum()` - Contagem de valores nulos por coluna
+  - `.isnull().sum().sum()` - Total de valores nulos
+  - `.isna().mean()` - Porcentagem de valores ausentes
+
+- **Valores únicos:**
+  - `.unique()` e `.nunique()` - Valores únicos em colunas
+  - `.value_counts()` - Contagem de valores únicos
+
+## **3. Limpeza e Preparação dos Dados**
+**Tratamento de Valores Ausentes:**
+- `.fillna(value=10)` - Preenchimento de valores nulos/brancos
+- Preenchimento com moda, média, mediana
+- Valores "Não informado" para dados categóricos
+
+**Tratamento de Dados:**
+- Remoção de duplicados
+- Conversão de tipos: `df['price'] = df['price'].astype(int)`
+- Padronização de textos (ex: "cachorro", "Cachorro" → "cachorro")
+- Tratamento de outliers
+- Remoção de dados irrelevantes
+
+## **4. Análise Exploratória e Visualização**
+**Objetivo:** Investigar comportamento dos dados, validar hipóteses
+
+**Preparação para Stakeholders:**
+- Análise dos gráficos (mesmo os mais simples)
+- Busca por problemas e padrões
+- Comunicação de insights
+
+**Métodos de Visualização:**
+- Pandas plotting (limitado)
+- Matplotlib (básico)
+- Seaborn (recomendado)
+- Plotly (interativo)
+
+**Tipos de Gráficos:**
+- `barplot` - Gráfico de barras
+- `histplot` - Histograma
+- `boxplot` - Boxplot
+- `plotly` - Gráficos interativos (bar, pie, donut)
+
+## **5. Modelagem Estatística (opcional)**
+- Análises estatísticas avançadas
+- Modelagem preditiva (se aplicável)
+
+## **6. Interpretação e Comunicação**
+**Dashboard Interativo:**
+- Streamlit para criação de dashboards
+- Estrutura de página: título, ícone, layout
+- Barra lateral com filtros (ano, senioridade, etc.)
+- Filtragem dinâmica do DataFrame
+- Métricas principais (KPIs)
+- Gráficos e visualizações
+
+## **7. Deployment**
+**Publicação Online:**
+- Streamlit Sharing (gratuito)
+- GitHub Pages
+
+**Repositório GitHub com:**
+- `app.py` (código Python)
+- `requirements.txt` (bibliotecas)
+- Dados necessários
+
+## **Fontes e Referências:**
+- Imersão Dados com Python: [Página da imersão](https://cursos.alura.com.br/imersoes/aulas/aula-04-c184)
+- Notebook: [GitHub do Alura](https://github.com/guilhermeonrails/idcp-alura/blob/A7X3D9/aulas.ipynb)
+- Criar repositório no GitHub: [Documentação](https://docs.google.com/document/d/14-bM6uBTGpAmauApZ1BwMc5U4bIeq6GUesufvzsNyQI/edit?tab=t.0#heading=h.d4oi1sj7w5nj)
+- Código no Github: [Repositório Alura](https://github.com/almeidamarcell/imersao-dados-python-alura-2025)
+- Dash publicado: [Dashboard de Salários](https://dashboard-salarios-dados.streamlit.app/)
+- Dash publicado (Código): [Template Streamlit](https://github.com/amrrs/streamlit-dashboard-template/blob/main/dashboard.py)
+
+## **Principais Melhorias:**
+- Clareza temporal - Passo a passo lógico
+- Organização temática - Agrupamento por tipo de atividade
+- Hierarquia de importância - Etapas principais primeiro
+- Evitar duplicação - Evitar repetição de métodos em múltiplas etapas
+- Essa organização ajuda a entender melhor o fluxo do processo completo de análise de dados.
+
+
 
 
 
