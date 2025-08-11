@@ -136,34 +136,37 @@ Obs: cada célula um comentário
 
 
 
-# Processo Completo de Análise de Dados com Python
+=====================================================================================
+# Estudo de Caso Cafeteria
 
-## **Criação do Projeto Localmente**
-- **Nomenclatura:** `df_nome_tratamento` ou nome abreviado
+## Entendimento do Negócio
 
+## Problema da empresa
 
-## **1. Coleta de Dados**
+#### FONTE DE DADOS
+
+#### **1. Coleta de Dados**
 **Ferramentas e métodos:**
 - Carregamento de dados via CSV, Excel, APIs
 - Exemplos: `pd.read_csv()`, `pd.read_excel()`, `requests.get()`
 - Todos Carregamentos: (https://chat.qwen.ai/c/3008c6af-663b-4e34-9c1c-7f09485adcf6)
 
-## **2. Exploração Inicial (EDA - Exploratory Data Analysis)**
-**Ferramentas de Inspeção:**
-- `.info()` - Informações gerais sobre o dataset
-- `.head()` e `.tail()` - Visualização das primeiras/últimas linhas
-- `.sample()` - Amostra aleatória de dados
-- `.shape` - Dimensões do dataframe
-- `.dtypes` - Tipos de dados das colunas
-- `.columns` - Nomes das colunas
-
+#### **2. Exploração Inicial (EDA - Exploratory Data Analysis)**
 **Análise Descritiva:**
-- `.describe()` - Estatísticas descritivas básicas
-- `.describe(include='object')` - Estatísticas para colunas categóricas
+- `.describe() - Estatísticas descritivas básicas
+- `.describe(include='object') - Estatísticas para colunas categóricas
+
+**Ferramentas de Inspeção:**
+- `.head()` e `.tail()` - Visualização das primeiras/últimas linhas
+- `.sample(15)` - Amostra aleatória de dados
+- `.shape` - Dimensões do dataframe
+- `.columns` - Nomes das colunas            # TRATAR
+- `.info()` - Informações gerais sobre o dataset  (dá p ver os tipos das colunas) 
+      - `.dtypes` - Tipos de dados das colunas
 
 **Análise de Qualidade dos Dados:**
 - **Valores nulos:** 
-  - `.isnull().sum()` - Contagem de valores nulos por coluna
+  - `.isnull().sum()` - Contagem de valores nulos por cada coluna     #TRATAR
   - `.isnull().sum().sum()` - Total de valores nulos
   - `.isna().mean()` - Porcentagem de valores ausentes
 
@@ -171,20 +174,37 @@ Obs: cada célula um comentário
   - `.unique()` e `.nunique()` - Valores únicos em colunas
   - `.value_counts()` - Contagem de valores únicos
 
-## **3. Limpeza e Preparação dos Dados**
-**Tratamento de Valores Ausentes:**
+#### **3. Limpeza e Preparação dos Dados** 
+
+
+**Identificando valores no dataframe**
+.info()    # Informações gerais sobre o DataFrame
+.isnull().sum()   # Verificar valores nulos
+
+
+**Tratamento de Valores Ausentes:**                                          #STOP HERE 22 DBricks
+
+# Visualizar valores únicos de várias colunas separadamente
+colunas = ['Payment Method', 'Location', 'Item', 'Quantity', 'Price Per Unit']
+for coluna in colunas:
+    print(f"\n=== Valores únicos na coluna '{coluna}' ===")
+    print(dadosloja_df[coluna].unique())  
+
 - `.fillna(value=10)` - Preenchimento de valores nulos/brancos
-- Preenchimento com moda, média, mediana
+- Preenchimento com moda, média, mediana 
+         dadosloja_df['salario'].fillna(0, inplace=True)
 - Valores "Não informado" para dados categóricos
+         dadosloja_df['Item'] = dadosloja_df['Item'].fillna("Não informado")
 
 **Tratamento de Dados:**
 - Remoção de duplicados
-- Conversão de tipos: `df['price'] = df['price'].astype(int)`
+- Conversão de tipos: `df['price'] = df['price'].astype(int)`    #TRATAR  Price Per Unit, Total Spent,Transaction Date
 - Padronização de textos (ex: "cachorro", "Cachorro" → "cachorro")
 - Tratamento de outliers
 - Remoção de dados irrelevantes
 
-## **4. Análise Exploratória e Visualização**
+
+RR## **4. Análise Exploratória e Visualização**
 **Objetivo:** Investigar comportamento dos dados, validar hipóteses
 
 **Preparação para Stakeholders:**
@@ -204,11 +224,11 @@ Obs: cada célula um comentário
 - `boxplot` - Boxplot
 - `plotly` - Gráficos interativos (bar, pie, donut)
 
-## **5. Modelagem Estatística (opcional)**
+#### **5. Modelagem Estatística (opcional)**
 - Análises estatísticas avançadas
 - Modelagem preditiva (se aplicável)
 
-## **6. Interpretação e Comunicação**
+#### **6. Interpretação e Comunicação**
 **Dashboard Interativo:**
 - Streamlit para criação de dashboards
 - Estrutura de página: título, ícone, layout
@@ -217,7 +237,9 @@ Obs: cada célula um comentário
 - Métricas principais (KPIs)
 - Gráficos e visualizações
 
-## **7. Deployment**
+
+
+#### **7. Deployment**
 **Publicação Online:**
 - Streamlit Sharing (gratuito)
 - GitHub Pages
@@ -227,7 +249,7 @@ Obs: cada célula um comentário
 - `requirements.txt` (bibliotecas)
 - Dados necessários
 
-## **Fontes e Referências:**
+#### **Fontes e Referências:**
 - Imersão Dados com Python: [Página da imersão](https://cursos.alura.com.br/imersoes/aulas/aula-04-c184)
 - Notebook: [GitHub do Alura](https://github.com/guilhermeonrails/idcp-alura/blob/A7X3D9/aulas.ipynb)
 - Criar repositório no GitHub: [Documentação](https://docs.google.com/document/d/14-bM6uBTGpAmauApZ1BwMc5U4bIeq6GUesufvzsNyQI/edit?tab=t.0#heading=h.d4oi1sj7w5nj)
@@ -235,7 +257,7 @@ Obs: cada célula um comentário
 - Dash publicado: [Dashboard de Salários](https://dashboard-salarios-dados.streamlit.app/)
 - Dash publicado (Código): [Template Streamlit](https://github.com/amrrs/streamlit-dashboard-template/blob/main/dashboard.py)
 
-## **Principais Melhorias:**
+#### **Principais Melhorias:**
 - Clareza temporal - Passo a passo lógico
 - Organização temática - Agrupamento por tipo de atividade
 - Hierarquia de importância - Etapas principais primeiro
