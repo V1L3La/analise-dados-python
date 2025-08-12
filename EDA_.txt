@@ -176,13 +176,13 @@ Obs: cada célula um comentário
 
 #### **3. Limpeza e Preparação dos Dados** 
 
+dadosloja_df    # visualize o data frame e apague
 
-**Identificando valores no dataframe**
+**Identificando valores NULOS no dataframe**
 .info()    # Informações gerais sobre o DataFrame
 .isnull().sum()   # Verificar valores nulos
 
-
-**Tratamento de Valores Ausentes:**                                          #STOP HERE 22 DBricks
+**Tratamento de Valores Ausentes:**                                        
 
 # Visualizar valores únicos de várias colunas separadamente
 colunas = ['Payment Method', 'Location', 'Item', 'Quantity', 'Price Per Unit']
@@ -190,13 +190,35 @@ for coluna in colunas:
     print(f"\n=== Valores únicos na coluna '{coluna}' ===")
     print(dadosloja_df[coluna].unique())  
 
-- `.fillna(value=10)` - Preenchimento de valores nulos/brancos
-- Preenchimento com moda, média, mediana 
-         dadosloja_df['salario'].fillna(0, inplace=True)
-- Valores "Não informado" para dados categóricos
-         dadosloja_df['Item'] = dadosloja_df['Item'].fillna("Não informado")
+# Sugestão Preenchimento:         
+Dados numéricos: com moda, média, mediana, etc....
+Dados categóricos: com valores "Não informado", etc....
 
-**Tratamento de Dados:**
+  # P CATEGÓRICAS E NUMÉRICOS
+# Substituir valores 'ERROR', 'UNKNOWN' e NaN por 'Não informado' em várias colunas CATEGÓRICAS / NUMÉRICAS
+colunas_tratar = ['Payment Method', 'Location', 'Item']
+for coluna in colunas_tratar:
+    # Substitui: ERROR, UNKNOWN, NaN → "Não informado"
+    dadosloja_df[coluna] = dadosloja_df[coluna].replace(['ERROR', 'UNKNOWN'], 'NaN')
+    dadosloja_df[coluna] = dadosloja_df[coluna].fillna('Não informado')   # para numericos = 0
+dadosloja_df.info()              # Informações gerais sobre o DataFrame
+dadosloja_df.isnull().sum()      # Verificar valores nulos trocados
+
+  # P DATA
+# 1- Identificando a data inicial de Transaction Date para substituir 159 valores nulos de 10000
+dadosloja_df = dadosloja_df.sort_values(by='Transaction Date', ascending=True)    # 2023-01-01
+dadosloja_df['Transaction Date']
+
+# 2. Substituir valores 'ERROR', 'UNKNOWN' e NaN por '2023-01-01'em 159 valores de 10000 em coluna de data
+colunas_tratar = ['Transaction Date']
+for coluna in colunas_tratar:
+    # Substitui: ERROR, UNKNOWN, NaN → "2023-01-01"
+    dadosloja_df[coluna] = dadosloja_df[coluna].replace(['ERROR', 'UNKNOWN'], 'NaN')
+    dadosloja_df[coluna] = dadosloja_df[coluna].fillna('2023-01-01')
+
+ 
+
+**Tratamento de Dados:**              #STOP HERE 22 DBricks
 - Remoção de duplicados
 - Conversão de tipos: `df['price'] = df['price'].astype(int)`    #TRATAR  Price Per Unit, Total Spent,Transaction Date
 - Padronização de textos (ex: "cachorro", "Cachorro" → "cachorro")
