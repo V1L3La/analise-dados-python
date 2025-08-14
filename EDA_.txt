@@ -139,19 +139,19 @@ Obs: cada célula um comentário
 =====================================================================================
 # Estudo de Caso Cafeteria
 
-## Entendimento do Negócio
+      ## Entendimento do Negócio
 
-## Problema da empresa
+      ## Problema da empresa
 
-#### FONTE DE DADOS
+      #### FONTE DE DADOS
 
-#### **1. Coleta de Dados**
+      #### **1. Coleta de Dados**
 **Ferramentas e métodos:**
 - Carregamento de dados via CSV, Excel, APIs
 - Exemplos: `pd.read_csv()`, `pd.read_excel()`, `requests.get()`
 - Todos Carregamentos: (https://chat.qwen.ai/c/3008c6af-663b-4e34-9c1c-7f09485adcf6)
 
-#### **2. Exploração Inicial (EDA - Exploratory Data Analysis)**
+      #### **2. Exploração Inicial (EDA - Exploratory Data Analysis)**
 **Análise Descritiva:**
 - `.describe() - Estatísticas descritivas básicas
 - `.describe(include='object') - Estatísticas para colunas categóricas
@@ -174,7 +174,7 @@ Obs: cada célula um comentário
   - `.unique()` e `.nunique()` - Valores únicos em colunas
   - `.value_counts()` - Contagem de valores únicos
 
-#### **3. Limpeza e Preparação dos Dados** 
+      #### **3. Limpeza e Preparação dos Dados** 
 
 dadosloja_df    # visualize o data frame e apague
 
@@ -183,50 +183,101 @@ dadosloja_df    # visualize o data frame e apague
 .isnull().sum()   # Verificar valores nulos
 
 **Tratamento de Valores Ausentes:**                                        
-
-# Visualizar valores únicos de várias colunas separadamente
-colunas = ['Payment Method', 'Location', 'Item', 'Quantity', 'Price Per Unit']
-for coluna in colunas:
-    print(f"\n=== Valores únicos na coluna '{coluna}' ===")
-    print(dadosloja_df[coluna].unique())  
-
 # Sugestão Preenchimento:         
 Dados numéricos: com moda, média, mediana, etc....
 Dados categóricos: com valores "Não informado", etc....
 
-  # P CATEGÓRICAS E NUMÉRICOS
-# Substituir valores 'ERROR', 'UNKNOWN' e NaN por 'Não informado' em várias colunas CATEGÓRICAS / NUMÉRICAS
-colunas_tratar = ['Payment Method', 'Location', 'Item']
-for coluna in colunas_tratar:
-    # Substitui: ERROR, UNKNOWN, NaN → "Não informado"
-    dadosloja_df[coluna] = dadosloja_df[coluna].replace(['ERROR', 'UNKNOWN'], 'NaN')
-    dadosloja_df[coluna] = dadosloja_df[coluna].fillna('Não informado')   # para numericos = 0
-dadosloja_df.info()              # Informações gerais sobre o DataFrame
-dadosloja_df.isnull().sum()      # Verificar valores nulos trocados
+                                # CODE AUSENTES :
+%python
+# =====================================================================
+# TRATAMENTO DE VALORES INVÁLIDOS E AUSENTES
+# =====================================================================
+# 1. Tratar colunas categóricas
+print("🔄 Tratando colunas categóricas...")
+colunas_categoricas = ['Payment Method', 'Location', 'Item']
+for coluna in colunas_categoricas:
+    # Substituir valores específicos por "Não informado"
+    dadosloja_df[coluna] = dadosloja_df[coluna].replace(['ERROR', 'UNKNOWN'], 'Não informado')
+    # Preencher valores NaN por "Não informado"
+    dadosloja_df[coluna] = dadosloja_df[coluna].fillna('Não informado')
+    print(f"✅ Coluna '{coluna}' tratada")
 
-  # P DATA
-# 1- Identificando a data inicial de Transaction Date para substituir 159 valores nulos de 10000
-dadosloja_df = dadosloja_df.sort_values(by='Transaction Date', ascending=True)    # 2023-01-01
-dadosloja_df['Transaction Date']
+# 2. Tratar colunas numéricas (substituir por 0)
+print("\n🔄 Tratando colunas numéricas...")
+colunas_numericas = ['Quantity', 'Price Per Unit', 'Total Spent']
+for coluna in colunas_numericas:
+    # Substituir valores específicos por 0
+    dadosloja_df[coluna] = dadosloja_df[coluna].replace(['ERROR', 'UNKNOWN'], 0)
+    # Preencher valores NaN por 0
+    dadosloja_df[coluna] = dadosloja_df[coluna].fillna(0)
+    print(f"✅ Coluna '{coluna}' tratada")
 
-# 2. Substituir valores 'ERROR', 'UNKNOWN' e NaN por '2023-01-01'em 159 valores de 10000 em coluna de data
-colunas_tratar = ['Transaction Date']
-for coluna in colunas_tratar:
-    # Substitui: ERROR, UNKNOWN, NaN → "2023-01-01"
-    dadosloja_df[coluna] = dadosloja_df[coluna].replace(['ERROR', 'UNKNOWN'], 'NaN')
+# 3. Tratar colunas de data
+print("\n🔄 Tratando coluna de data...")
+coluna_data = ['Transaction Date']
+for coluna in coluna_data:
+    # Substituir valores específicos por "Não informado"
+    dadosloja_df[coluna] = dadosloja_df[coluna].replace(['ERROR', 'UNKNOWN'], '2023-01-01')
+    # Preencher valores NaN por "Não informado"
     dadosloja_df[coluna] = dadosloja_df[coluna].fillna('2023-01-01')
+    print(f"✅ Coluna '{coluna}' tratada")
 
- 
+# =====================================================================
+# VERIFICAÇÕES FINAIS
+# =====================================================================
+# 4. Informações gerais sobre o DataFrame
+print("\n📋 Informações gerais do DataFrame:")
+dadosloja_df.info()
 
-**Tratamento de Dados:**              #STOP HERE 22 DBricks
+# 5. Verificar valores nulos restantes
+print("\n🔍 Valores nulos após tratamento:")
+print(dadosloja_df.isnull().sum())
+
+# 6. Identificar valores únicos de várias colunas separadamente
+todas_colunas = ['Payment Method', 'Location', 'Item', 'Quantity', 'Price Per Unit', 'Total Spent', 'Transaction Date']
+for cada_coluna in todas_colunas:
+    print(f"\n=== Valores únicos na coluna '{cada_coluna}' ===")
+    print(dadosloja_df[cada_coluna].unique())
+
+                                # FIM CODE AUSENTES:
+
+
+**Tratamento de Dados:**              
 - Remoção de duplicados
-- Conversão de tipos: `df['price'] = df['price'].astype(int)`    #TRATAR  Price Per Unit, Total Spent,Transaction Date
 - Padronização de textos (ex: "cachorro", "Cachorro" → "cachorro")
 - Tratamento de outliers
 - Remoção de dados irrelevantes
+- Conversão de tipos
+                                # CODE TIPOS:
+# =====================================================================
+# CONVERSÃO DE TIPOS DE DADOS
+# =====================================================================
+print("🔄 Convertendo tipos de dados...")
+
+# Quantity deve ser inteiro (int)
+dadosloja_df['Quantity'] = pd.to_numeric(dadosloja_df['Quantity'], errors='coerce').astype('Int64')
+
+# Price Per Unit e Total Spent devem ser float
+dadosloja_df['Price Per Unit'] = pd.to_numeric(dadosloja_df['Price Per Unit'], errors='coerce').astype('float64')
+dadosloja_df['Total Spent'] = pd.to_numeric(dadosloja_df['Total Spent'], errors='coerce').astype('float64')
+
+# 2. Converter coluna de data para datetime
+dadosloja_df['Transaction Date'] = pd.to_datetime(dadosloja_df['Transaction Date'], errors='coerce')
+
+# =====================================================================
+# VERIFICAÇÕES FINAIS
+# =====================================================================
+
+dadosloja_df.info()
+
+# 3. Mostrar amostra dos dados convertidos
+print("\n📊 Amostra dos dados convertidos para confirmar as transformações de tipos:")
+dadosloja_df[['Payment Method','Item','Quantity', 'Price Per Unit', 'Total Spent', 'Location','Transaction Date']].sample(5)
+                                 # FIM CODE TIPOS:
 
 
-RR## **4. Análise Exploratória e Visualização**
+
+      #### **4. Análise Exploratória e Visualização**
 **Objetivo:** Investigar comportamento dos dados, validar hipóteses
 
 **Preparação para Stakeholders:**
@@ -246,11 +297,11 @@ RR## **4. Análise Exploratória e Visualização**
 - `boxplot` - Boxplot
 - `plotly` - Gráficos interativos (bar, pie, donut)
 
-#### **5. Modelagem Estatística (opcional)**
+      #### **5. Modelagem Estatística (opcional)**
 - Análises estatísticas avançadas
 - Modelagem preditiva (se aplicável)
 
-#### **6. Interpretação e Comunicação**
+      #### **6. Interpretação e Comunicação**
 **Dashboard Interativo:**
 - Streamlit para criação de dashboards
 - Estrutura de página: título, ícone, layout
@@ -261,7 +312,7 @@ RR## **4. Análise Exploratória e Visualização**
 
 
 
-#### **7. Deployment**
+      #### **7. Deployment**
 **Publicação Online:**
 - Streamlit Sharing (gratuito)
 - GitHub Pages
@@ -271,7 +322,7 @@ RR## **4. Análise Exploratória e Visualização**
 - `requirements.txt` (bibliotecas)
 - Dados necessários
 
-#### **Fontes e Referências:**
+      #### **Fontes e Referências:**
 - Imersão Dados com Python: [Página da imersão](https://cursos.alura.com.br/imersoes/aulas/aula-04-c184)
 - Notebook: [GitHub do Alura](https://github.com/guilhermeonrails/idcp-alura/blob/A7X3D9/aulas.ipynb)
 - Criar repositório no GitHub: [Documentação](https://docs.google.com/document/d/14-bM6uBTGpAmauApZ1BwMc5U4bIeq6GUesufvzsNyQI/edit?tab=t.0#heading=h.d4oi1sj7w5nj)
@@ -279,7 +330,7 @@ RR## **4. Análise Exploratória e Visualização**
 - Dash publicado: [Dashboard de Salários](https://dashboard-salarios-dados.streamlit.app/)
 - Dash publicado (Código): [Template Streamlit](https://github.com/amrrs/streamlit-dashboard-template/blob/main/dashboard.py)
 
-#### **Principais Melhorias:**
+      #### **Principais Melhorias:**
 - Clareza temporal - Passo a passo lógico
 - Organização temática - Agrupamento por tipo de atividade
 - Hierarquia de importância - Etapas principais primeiro
