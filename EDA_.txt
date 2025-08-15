@@ -1,5 +1,7 @@
                              PORTIFÓLIO de INSIGHTS  (ANALISTA DE PROBLEMA/DOR)
                      fonte: https://chat.qwen.ai/c/3b3ccd3c-53e4-4e8f-b2ce-199473b44ed3 
+
+Markdown: http://cursos.leg.ufpr.br/prr/capMarkdown.html 
 =====================================================================================
 🌐 1. FONTE DE DADOS 
 
@@ -119,9 +121,8 @@ Use esse conteúdo como base para:
   ➤ Um GitHub com o código (notebooks Databricks + README explicativo).
   ➤ Um LinkedIn post mostrando o processo e os resultados.
   ➤ Uma apresentação técnica em entrevistas para mostrar sua jornada analítica.                            
-=====================================================================================
 
-
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 
 =====================================================================================
 Readme formatado: 
@@ -136,31 +137,41 @@ Obs: cada célula um comentário
 
 
 
-=====================================================================================
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 # Estudo de Caso Cafeteria
 
       ## Entendimento do Negócio
-
+╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤
       ## Problema da empresa
-
+╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤
       #### FONTE DE DADOS
-
+╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤
       #### **1. Coleta de Dados**
 **Ferramentas e métodos:**
+- Bibliotecas
 - Carregamento de dados via CSV, Excel, APIs
 - Exemplos: `pd.read_csv()`, `pd.read_excel()`, `requests.get()`
 - Todos Carregamentos: (https://chat.qwen.ai/c/3008c6af-663b-4e34-9c1c-7f09485adcf6)
+╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤
+      #### **2. Análise Exploratória  Inicial (EDA - Exploratory Data Analysis)**
 
-      #### **2. Exploração Inicial (EDA - Exploratory Data Analysis)**
+✅ Ordem lógica:
+Entender → 2. Qualidade → 3. Explorar → 4. Validar → 5. Agrupar → 6. Visualizar → 7. Resumir
+
+.sample(15)
+.columns
+.info()
+
 **Análise Descritiva:**
-- `.describe() - Estatísticas descritivas básicas
-- `.describe(include='object') - Estatísticas para colunas categóricas
+- .describe() - Apenas colunas numéricas
+- .describe(percentiles=[0.1, 0.9]) - Divide melhor o Dataframe para analisar
+- .describe(include='object') - Apenas colunas categóricas
 
 **Ferramentas de Inspeção:**
 - `.head()` e `.tail()` - Visualização das primeiras/últimas linhas
 - `.sample(15)` - Amostra aleatória de dados
 - `.shape` - Dimensões do dataframe
-- `.columns` - Nomes das colunas            # TRATAR
+- `.columns` - Nomes das colunas            
 - `.info()` - Informações gerais sobre o dataset  (dá p ver os tipos das colunas) 
       - `.dtypes` - Tipos de dados das colunas
 
@@ -174,6 +185,7 @@ Obs: cada célula um comentário
   - `.unique()` e `.nunique()` - Valores únicos em colunas
   - `.value_counts()` - Contagem de valores únicos
 
+ ╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤ 
       #### **3. Limpeza e Preparação dos Dados** 
 
 dadosloja_df    # visualize o data frame e apague
@@ -184,11 +196,18 @@ dadosloja_df    # visualize o data frame e apague
 
 **Tratamento de Valores Ausentes:**                                        
 # Sugestão Preenchimento:         
-Dados numéricos: com moda, média, mediana, etc....
-Dados categóricos: com valores "Não informado", etc....
+        Dados numéricos: com moda, média, mediana, etc....
+        Dados categóricos: com valores "Não informado", etc....
+
+                                # CODE VER VALORES ERRADOS :
+# identificar valores únicos de várias colunas separadamente
+colunas = ['Payment Method', 'Location', 'Item', 'Quantity', 'Price Per Unit', 'Total Spent', 'Transaction Date']
+for coluna in colunas:
+    print(f"\n=== Valores únicos na coluna '{coluna}' ===")
+    print(dadosloja_df[coluna].unique())
+                                # FIM  VER VALORES ERRADOS :
 
                                 # CODE AUSENTES :
-%python
 # =====================================================================
 # TRATAMENTO DE VALORES INVÁLIDOS E AUSENTES
 # =====================================================================
@@ -221,7 +240,6 @@ for coluna in coluna_data:
     # Preencher valores NaN por "Não informado"
     dadosloja_df[coluna] = dadosloja_df[coluna].fillna('2023-01-01')
     print(f"✅ Coluna '{coluna}' tratada")
-
 # =====================================================================
 # VERIFICAÇÕES FINAIS
 # =====================================================================
@@ -238,16 +256,22 @@ todas_colunas = ['Payment Method', 'Location', 'Item', 'Quantity', 'Price Per Un
 for cada_coluna in todas_colunas:
     print(f"\n=== Valores únicos na coluna '{cada_coluna}' ===")
     print(dadosloja_df[cada_coluna].unique())
-
                                 # FIM CODE AUSENTES:
 
 
 **Tratamento de Dados:**              
-- Remoção de duplicados
+
 - Padronização de textos (ex: "cachorro", "Cachorro" → "cachorro")
+
 - Tratamento de outliers
+
 - Remoção de dados irrelevantes
-- Conversão de tipos
+
+- Identificar valores duplicados:
+# 2.2 Valores duplicados
+dadosloja_df.duplicated().sum()  # Total de linhas duplicadas
+
+- Conversão de tipos:
                                 # CODE TIPOS:
 # =====================================================================
 # CONVERSÃO DE TIPOS DE DADOS
@@ -275,32 +299,54 @@ print("\n📊 Amostra dos dados convertidos para confirmar as transformações d
 dadosloja_df[['Payment Method','Item','Quantity', 'Price Per Unit', 'Total Spent', 'Location','Transaction Date']].sample(5)
                                  # FIM CODE TIPOS:
 
+- Traduzir nome das colunas
+# Trocar nomes das colunas
+dadosloja_df.rename(columns={
+    "Transaction ID": "ID_Transação",
+    "Item": "Item",
+    "Quantity": "Quantidade",
+    "Price Per Unit": "Preço_por_Unidade",
+    "Total Spent": "Total_Gasto",
+    "Payment Method": "Método_Pagamento",
+    "Location": "Localização",
+    "Transaction Date": "Data_Transação"
+}, inplace=True)
+dadosloja_df.columns
 
-
+ ╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤ 
       #### **4. Análise Exploratória e Visualização**
-**Objetivo:** Investigar comportamento dos dados, validar hipóteses
-
-**Preparação para Stakeholders:**
+    **Objetivo:** Investigar comportamento dos dados, validar hipóteses
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+    **Preparação para Stakeholders:**
 - Análise dos gráficos (mesmo os mais simples)
 - Busca por problemas e padrões
 - Comunicação de insights
 
-**Métodos de Visualização:**
-- Pandas plotting (limitado)
-- Matplotlib (básico)
-- Seaborn (recomendado)
-- Plotly (interativo)
+    **Métodos de Visualização:** 
+- Pandas plotting (limitado) - Matplotlib (básico) - Seaborn (recomendado) - Plotly (interativo)
 
-**Tipos de Gráficos:**
-- `barplot` - Gráfico de barras
-- `histplot` - Histograma
-- `boxplot` - Boxplot
-- `plotly` - Gráficos interativos (bar, pie, donut)
+    **Tipos de Gráficos:**
+- `barplot` - Gráfico de barras  - `histplot` - Histograma - `boxplot` - Boxplot
+             - `plotly` - Gráficos interativos (bar, pie, donut)
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+** Comportamento dos dados:**
+.sample(5)
+.describe(percentiles=[0.1, 0.9])    # Faça analise profunda das colunas de números
 
+
+
+
+
+
+
+
+ ╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤ 
       #### **5. Modelagem Estatística (opcional)**
 - Análises estatísticas avançadas
 - Modelagem preditiva (se aplicável)
 
+
+ ╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤ 
       #### **6. Interpretação e Comunicação**
 **Dashboard Interativo:**
 - Streamlit para criação de dashboards
@@ -311,7 +357,7 @@ dadosloja_df[['Payment Method','Item','Quantity', 'Price Per Unit', 'Total Spent
 - Gráficos e visualizações
 
 
-
+ ╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤ 
       #### **7. Deployment**
 **Publicação Online:**
 - Streamlit Sharing (gratuito)
@@ -322,6 +368,7 @@ dadosloja_df[['Payment Method','Item','Quantity', 'Price Per Unit', 'Total Spent
 - `requirements.txt` (bibliotecas)
 - Dados necessários
 
+ ╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤ 
       #### **Fontes e Referências:**
 - Imersão Dados com Python: [Página da imersão](https://cursos.alura.com.br/imersoes/aulas/aula-04-c184)
 - Notebook: [GitHub do Alura](https://github.com/guilhermeonrails/idcp-alura/blob/A7X3D9/aulas.ipynb)
@@ -330,6 +377,7 @@ dadosloja_df[['Payment Method','Item','Quantity', 'Price Per Unit', 'Total Spent
 - Dash publicado: [Dashboard de Salários](https://dashboard-salarios-dados.streamlit.app/)
 - Dash publicado (Código): [Template Streamlit](https://github.com/amrrs/streamlit-dashboard-template/blob/main/dashboard.py)
 
+ ╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤ 
       #### **Principais Melhorias:**
 - Clareza temporal - Passo a passo lógico
 - Organização temática - Agrupamento por tipo de atividade
