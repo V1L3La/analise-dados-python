@@ -175,7 +175,13 @@ Entender → 2. Qualidade → 3. Explorar → 4. Validar → 5. Agrupar → 6. V
 - `.info()` - Informações gerais sobre o dataset  (dá p ver os tipos das colunas) 
       - `.dtypes` - Tipos de dados das colunas
 
+
 **Análise de Qualidade dos Dados:**
+sugestão para economizar tempo nas análises:  (DISPLAY)    
+        Ex1: novo_df = display(antigo_df[antigo_df['Item'] == 'Cookie'])
+        EX2:  dadosloja_zero_price_df = dadosloja_df[dadosloja_df['Price Per Unit'] == 0]
+               display(dadosloja_zero_price_df)
+
 - **Valores nulos:** 
   - `.isnull().sum()` - Contagem de valores nulos por cada coluna     #TRATAR
   - `.isnull().sum().sum()` - Total de valores nulos
