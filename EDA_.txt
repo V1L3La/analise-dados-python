@@ -258,6 +258,8 @@ for cada_coluna in todas_colunas:
     print(dadosloja_df[cada_coluna].unique())
                                 # FIM CODE AUSENTES:
 
+# Correlações (se houver colunas numéricas)
+dadosloja_df[['Quantity', 'Price Per Unit', 'Total Spent']].corr()
 
 **Tratamento de Dados:**              
 
@@ -312,6 +314,7 @@ dadosloja_df.rename(columns={
     "Transaction Date": "Data_Transação"
 }, inplace=True)
 dadosloja_df.columns
+
 
  ╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤ 
       #### **4. Análise Exploratória e Visualização**
