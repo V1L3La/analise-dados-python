@@ -1,7 +1,8 @@
                              PORTIFÓLIO de INSIGHTS  (ANALISTA DE PROBLEMA/DOR)
                      fonte: https://chat.qwen.ai/c/3b3ccd3c-53e4-4e8f-b2ce-199473b44ed3 
 
-Markdown: http://cursos.leg.ufpr.br/prr/capMarkdown.html 
+Markdown I: http://cursos.leg.ufpr.br/prr/capMarkdown.html 
+Markdown II: https://pt.stackoverflow.com/help/formatting 
 =====================================================================================
 🌐 1. FONTE DE DADOS 
 
@@ -162,10 +163,9 @@ Entender → 2. Qualidade → 3. Explorar → 4. Validar → 5. Agrupar → 6. V
 .columns
 .info()
 
-**Análise Descritiva:**
-- .describe() - Apenas colunas numéricas
-- .describe(percentiles=[0.1, 0.9]) - Divide melhor o Dataframe para analisar
-- .describe(include='object') - Apenas colunas categóricas
+**Análise Descritiva:**          [DESCOBERTAS INICIAIS ANTES DO TRATAMENTO]
+- print(df.describe(percentiles=[0.1, 0.9])) #- Divide melhor o Dataframe para analisar
+- print(df.describe(include='object')) #- Apenas colunas categóricas
 
 **Ferramentas de Inspeção:**
 - `.head()` e `.tail()` - Visualização das primeiras/últimas linhas
@@ -264,17 +264,29 @@ for cada_coluna in todas_colunas:
     print(dadosloja_df[cada_coluna].unique())
                                 # FIM CODE AUSENTES:
 
-# Correlações (se houver colunas numéricas)
+
+:::::::::::::::REVELA DESCOBERTAS(INSIGHTS) EXTRATÉGICAS:::  [DESCRIBE()]   [CORRELAÇÃO] 
+                                    (Usar a IA)
+# Describe()
+- print(df.describe(percentiles=[0.1, 0.9])) #- Divide melhor o Dataframe para analisar
+- print(df.describe(include='object')) #- Apenas colunas categóricas
+       PROMPT PARA O DESCRIBE:
+Analise esse describe dos dados para cada variavel com as seguintes perguntas: -O que está acontecendo? -Insights Práticos: Como melhorar esses Insights?
+
+
+# Correlações (em colunas numéricas)
+# OBS: Para usar correlação em colunas categoricas devemos tranforma-las em números (one-hot encoding)
+#(saber as relações reais entre variáveis para tomar decisões acertadas)
+#(Identifica nas colunas: padrões e tendências / relações ocultas / "correlação mostra relação, não prova causa" / 
+#  correlação muito alta (+0.9), podem estar dizendo a mesma coisa.)
+
 dadosloja_df[['Quantity', 'Price Per Unit', 'Total Spent']].corr()
 
+
 **Tratamento de Dados:**              
-
 - Padronização de textos (ex: "cachorro", "Cachorro" → "cachorro")
-
 - Tratamento de outliers
-
 - Remoção de dados irrelevantes
-
 - Identificar valores duplicados:
 # 2.2 Valores duplicados
 dadosloja_df.duplicated().sum()  # Total de linhas duplicadas
