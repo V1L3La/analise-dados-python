@@ -165,6 +165,7 @@ Entender → 2. Qualidade → 3. Explorar → 4. Validar → 5. Agrupar → 6. V
 
 **Análise Descritiva:**          [DESCOBERTAS INICIAIS ANTES DO TRATAMENTO]
 - print(df.describe(percentiles=[0.1, 0.9])) #- Divide melhor o Dataframe para analisar
+- variância
 - print(df.describe(include='object')) #- Apenas colunas categóricas
 
 **Ferramentas de Inspeção:**
@@ -274,7 +275,7 @@ for cada_coluna in todas_colunas:
 Analise esse describe dos dados para cada variavel com as seguintes perguntas: -O que está acontecendo? -Insights Práticos: Como melhorar esses Insights?
 
 
-# Correlações (em colunas numéricas)
+      # Correlações em 2 ou mais colunas numéricas
 # OBS: Para usar correlação em colunas categoricas devemos tranforma-las em números (one-hot encoding)
 #(saber as relações reais entre variáveis para tomar decisões acertadas)
 #(Identifica nas colunas: padrões e tendências / relações ocultas / "correlação mostra relação, não prova causa" / 
@@ -282,16 +283,26 @@ Analise esse describe dos dados para cada variavel com as seguintes perguntas: -
 
 dadosloja_df[['Quantity', 'Price Per Unit', 'Total Spent']].corr()
 
+      # Correlações em 2 ou mais colunas categóricas
+# QuiQuadrado
+# Para descobrir se há relação entre categorias.
+# Testar independência entre duas variáveis categóricas (ex: método de pagamento x local).       
+
 
 **Tratamento de Dados:**              
-- Padronização de textos (ex: "cachorro", "Cachorro" → "cachorro")
-- Tratamento de outliers
-- Remoção de dados irrelevantes
-- Identificar valores duplicados:
+>>- Padronização de textos (ex: "cachorro", "Cachorro" → "cachorro")
+>>- Remoção de dados irrelevantes
+>>- Tratamento de outliers:
+    -Histograma → mostra assimetria ou picos anômalos. <br/>
+    -Boxplot → mostra claramente outliers. <br/>
+    -os calculos estatísticos são baseados na média então tem que tratar<br/>
+    -saber a quantidade de outlies e seus valores<br/>
+    -sugestão é substituir pela moda ou mediana
+>>- Identificar valores duplicados:
 # 2.2 Valores duplicados
 dadosloja_df.duplicated().sum()  # Total de linhas duplicadas
 
-- Conversão de tipos:
+>>- Conversão de tipos:
                                 # CODE TIPOS:
 # =====================================================================
 # CONVERSÃO DE TIPOS DE DADOS
@@ -335,7 +346,7 @@ dadosloja_df.columns
 
 
  ╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤ 
-      #### **4. Análise Exploratória e Visualização**
+      #### **4. Análise Exploratória e Visualização**   (USAR ESTATÍSTICA)
     **Objetivo:** Investigar comportamento dos dados, validar hipóteses
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
     **Preparação para Stakeholders:**
@@ -353,8 +364,24 @@ dadosloja_df.columns
 ** Comportamento dos dados:**
 .sample(5)
 .describe(percentiles=[0.1, 0.9])    # Faça analise profunda das colunas de números
+- variância
 
+      Testes de hipótese             [Validar suposições]
+👉 Servem para verificar se uma afirmação sobre os dados é verdadeira ou não.
+Exemplo: será que o gasto médio com Sandwich é igual ao gasto médio com Juice?
 
+      Variância        [em relação a média]
+medida de quão dispersos os dados estão em relação à média.
+Entender se os valores são consistentes ou muito variáveis.
+Alta variância indica variação grande — pode ser sinal de outliers. 
+
+      Probabilidade
+Para prever comportamentos futuros.
+Calcular a chance de um evento ocorrer (ex: probabilidade de um produto ter preço > R$ 5).
+
+      QuiQuadrado
+Para descobrir se há relação entre categorias.
+Testar independência entre duas variáveis categóricas (ex: método de pagamento x local).
 
 
 
