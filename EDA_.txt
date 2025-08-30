@@ -139,86 +139,81 @@ Obs: cada célula um comentário
 
 
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
-# Estudo de Caso Cafeteria
+PROJETO:    # Estudo de Caso Cafeteria
 
       ## Entendimento do Negócio
-╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤
-      ## Problema da empresa
-╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤
+
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+      ## Problema da empresa: Perguntas a serem respondidas com os dados
+
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
       #### FONTE DE DADOS
-╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤
+
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
       #### **1. Coleta de Dados**
+≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈
 **Ferramentas e métodos:**
-- Bibliotecas
-- Carregamento de dados via CSV, Excel, APIs
-- Exemplos: `pd.read_csv()`, `pd.read_excel()`, `requests.get()`
-- Todos Carregamentos: (https://chat.qwen.ai/c/3008c6af-663b-4e34-9c1c-7f09485adcf6)
-╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤
+- Bibliotecas:     pandas, numpy, matplotlib, seaborn,......
+- Carregamento de dados:        via CSV, Excel, APIs
+        Ex: `pd.read_csv()`, `pd.read_excel()`, `requests.get()`
+           Todos Carregamentos: (https://chat.qwen.ai/c/3008c6af-663b-4e34-9c1c-7f09485adcf6)
+
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
       #### **2. Análise Exploratória  Inicial (EDA - Exploratory Data Analysis)**
-
-✅ Ordem lógica:
-Entender → 2. Qualidade → 3. Explorar → 4. Validar → 5. Agrupar → 6. Visualizar → 7. Resumir
-
-.sample(15)
+                       [DESCOBERTAS INICIAIS ANTES DO TRATAMENTO]
+≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈
+.sample(15) - Amostra aleatória de dados
+.head()` e `.tail()` - Visualização das primeiras/últimas linhas
 .columns
-.info()
+.info() - Informações gerais sobre o dataset  (dá p ver os tipos das colunas) 
+           - .dtypes - Tipos de dados das colunas
 
-**Análise Descritiva:**          [DESCOBERTAS INICIAIS ANTES DO TRATAMENTO]
-- print(df.describe(percentiles=[0.1, 0.9])) #- Divide melhor o Dataframe para analisar
-- variância
-- print(df.describe(include='object')) #- Apenas colunas categóricas
-
-**Ferramentas de Inspeção:**
-- `.head()` e `.tail()` - Visualização das primeiras/últimas linhas
-- `.sample(15)` - Amostra aleatória de dados
-- `.shape` - Dimensões do dataframe
-- `.columns` - Nomes das colunas            
-- `.info()` - Informações gerais sobre o dataset  (dá p ver os tipos das colunas) 
-      - `.dtypes` - Tipos de dados das colunas
-
-
-**Análise de Qualidade dos Dados:**
-sugestão para economizar tempo nas análises:  (DISPLAY)    
-        Ex1: novo_df = display(antigo_df[antigo_df['Item'] == 'Cookie'])
-        EX2:  dadosloja_zero_price_df = dadosloja_df[dadosloja_df['Price Per Unit'] == 0]
-               display(dadosloja_zero_price_df)
-
-- **Valores nulos:** 
-  - `.isnull().sum()` - Contagem de valores nulos por cada coluna     #TRATAR
-  - `.isnull().sum().sum()` - Total de valores nulos
-  - `.isna().mean()` - Porcentagem de valores ausentes
-
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+      #### **3. Análise da Qualidade dos Dados:**
+≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈
 - **Valores únicos:**
-  - `.unique()` e `.nunique()` - Valores únicos em colunas
-  - `.value_counts()` - Contagem de valores únicos
+   - .value_counts() - Contagem de valores únicos
 
- ╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤ 
-      #### **3. Limpeza e Preparação dos Dados** 
-
-dadosloja_df    # visualize o data frame e apague
-
-**Identificando valores NULOS no dataframe**
-.info()    # Informações gerais sobre o DataFrame
-.isnull().sum()   # Verificar valores nulos
-
-**Tratamento de Valores Ausentes:**                                        
-# Sugestão Preenchimento:         
-        Dados numéricos: com moda, média, mediana, etc....
-        Dados categóricos: com valores "Não informado", etc....
-
-                                # CODE VER VALORES ERRADOS :
-# identificar valores únicos de várias colunas separadamente
-colunas = ['Payment Method', 'Location', 'Item', 'Quantity', 'Price Per Unit', 'Total Spent', 'Transaction Date']
+   # identificar valores únicos de várias colunas separadamente
+colunas = ['coluna1', 'coluna2', 'colunax']
 for coluna in colunas:
     print(f"\n=== Valores únicos na coluna '{coluna}' ===")
     print(dadosloja_df[coluna].unique())
-                                # FIM  VER VALORES ERRADOS :
+≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈
+.duplicated().sum()  # Total de linhas duplicadas
+≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈
+- **Valores nulos:** 
+  - .isnull().sum() - Contagem de valores nulos por cada coluna     
+  - .isnull().sum().sum() - Total de valores nulos
+  - .isna().mean() - Porcentagem de valores ausentes
+≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈
+display(df)      # Tipo um power query do PBI
 
-                                # CODE AUSENTES :
+ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ 
+      #### **4. Limpeza e Preparação dos Dados** 
+°°°°°°°°°°°°°°°°°°°° 
+   # **Visualizando valores ÚNICOS e ERRADOS no dataframe para serem tratados**
+   # identificar valores únicos de várias colunas separadamente
+colunas = ['coluna1', 'coluna2', 'colunax']
+for coluna in colunas:
+    print(f"\n=== Valores únicos na coluna '{coluna}' ===")
+    print(dadosloja_df[coluna].unique())
+°°°°°°°°°°°°°°°°°°°°
+
+# Remoção de DADOS e COLUNAS IRRELEVANTES
+# Tratando valores com PADRONIZAÇÃO DE TEXTOS (ex: "cachorro", "Cachorro" → "cachorro")
+# Tratando valores NULOS no dataframe  (null = Não preencheu)
+# Tratando valores DUPLICADOS no dataframe
+# Tratando valores AUSENTES:                                        
+   #Sugestão Preenchimento:         
+        Dados numéricos: com moda, média, mediana, etc....
+        Dados categóricos: com valores "Não informado", etc....
+**Tratando de Valores ERRADOS(Categóricos, numéricos e data) e NAN:**   (NAN = Não é número ou indefinido ou inválido)
+# °°°°°°°°°°°°°°°°°°°°CODE ERRADOS(Categóricos, numéricos e data) e NAN :
 # =====================================================================
-# TRATAMENTO DE VALORES INVÁLIDOS E AUSENTES
+# TRATAMENTO DE VALORES ERRADOS
 # =====================================================================
-# 1. Tratar colunas categóricas
+# 1. EM COLUNAS CATEGÓRICAS:
 print("🔄 Tratando colunas categóricas...")
 colunas_categoricas = ['Payment Method', 'Location', 'Item']
 for coluna in colunas_categoricas:
@@ -228,7 +223,7 @@ for coluna in colunas_categoricas:
     dadosloja_df[coluna] = dadosloja_df[coluna].fillna('Não informado')
     print(f"✅ Coluna '{coluna}' tratada")
 
-# 2. Tratar colunas numéricas (substituir por 0)
+# 2.  EM COLUNAS NUMÉRICAS:   (nesse caso foi decidido substituir por 0)
 print("\n🔄 Tratando colunas numéricas...")
 colunas_numericas = ['Quantity', 'Price Per Unit', 'Total Spent']
 for coluna in colunas_numericas:
@@ -238,7 +233,7 @@ for coluna in colunas_numericas:
     dadosloja_df[coluna] = dadosloja_df[coluna].fillna(0)
     print(f"✅ Coluna '{coluna}' tratada")
 
-# 3. Tratar colunas de data
+# 3.  EM COLUNAS DE DATAS:   (nesse caso foi decidido substituir pela primeira data)
 print("\n🔄 Tratando coluna de data...")
 coluna_data = ['Transaction Date']
 for coluna in coluna_data:
@@ -263,45 +258,34 @@ todas_colunas = ['Payment Method', 'Location', 'Item', 'Quantity', 'Price Per Un
 for cada_coluna in todas_colunas:
     print(f"\n=== Valores únicos na coluna '{cada_coluna}' ===")
     print(dadosloja_df[cada_coluna].unique())
-                                # FIM CODE AUSENTES:
+# °°°°°°°°°°°°°°°°°°°°FIM CODE ERRADOS(Categóricos, numéricos e data) e NAN                     
 
 
-:::::::::::::::REVELA DESCOBERTAS(INSIGHTS) EXTRATÉGICAS:::  [DESCRIBE()]   [CORRELAÇÃO] 
-                                    (Usar a IA)
-# Describe()
-- print(df.describe(percentiles=[0.1, 0.9])) #- Divide melhor o Dataframe para analisar
-- print(df.describe(include='object')) #- Apenas colunas categóricas
-       PROMPT PARA O DESCRIBE:
-Analise esse describe dos dados para cada variavel com as seguintes perguntas: -O que está acontecendo? -Insights Práticos: Como melhorar esses Insights?
+# Tratando valores OUTLIERS
+1- Prompt para IA: (Identificando)
+"Crie um histograma para visualizar outliers:
+   -Use o intervalo interquartil (IQR)
+   -Use o dataframe dadosloja_4tratazeros_df
+   -O código gerado tem que ser o menor possível
+   -Quero saber a quantidade de outliers existentes"
+
+2- Tratando os Outliers
+✅ 1. Investigar antes de tratar                   # Mostrar os 10 maiores valores de coluna
+✅ 2. Remover outliers (se forem erros)           ⚠️ Isso pode afetar a análise — use com cuidado. 
+✅ 3. Substituir outliers por valores razoáveis    # Substituir outliers por mediana(Mantém as linhas e evita distorções)
+✅ 4. Crie uma nova coluna indicando outliers     # Melhor opção para manter os dados originais.
+      Ex: Util para analisar se os outliers impactam o resultado 
+      (ex: clientes VIP podem ser interessantes para segmentação, não para exclusão).
+         # °°°°°°°°°°°°°°°°°°°°
+         dadosloja_4tratazeros_df["Classificação Venda"] = dadosloja_4tratazeros_df["Total Spent"].apply(
+            lambda x: "Venda Alta" if x > Q3 + 1.5 * IQR else "Venda Normal"
+            )
+               display(dadosloja_4tratazeros_df)
+         # °°°°°°°°°°°°°°°°°°°°
 
 
-      # Correlações em 2 ou mais colunas numéricas
-# OBS: Para usar correlação em colunas categoricas devemos tranforma-las em números (one-hot encoding)
-#(saber as relações reais entre variáveis para tomar decisões acertadas)
-#(Identifica nas colunas: padrões e tendências / relações ocultas / "correlação mostra relação, não prova causa" / 
-#  correlação muito alta (+0.9), podem estar dizendo a mesma coisa.)
 
-dadosloja_df[['Quantity', 'Price Per Unit', 'Total Spent']].corr()
-
-      # Correlações em 2 ou mais colunas categóricas
-# QuiQuadrado
-# Para descobrir se há relação entre categorias.
-# Testar independência entre duas variáveis categóricas (ex: método de pagamento x local).       
-
-
-**Tratamento de Dados:**              
->>- Padronização de textos (ex: "cachorro", "Cachorro" → "cachorro")
->>- Remoção de dados irrelevantes
->>- Tratamento de outliers:
-    -Histograma → mostra assimetria ou picos anômalos. <br/>
-    -Boxplot → mostra claramente outliers. <br/>
-    -os calculos estatísticos são baseados na média então tem que tratar<br/>
-    -saber a quantidade de outlies e seus valores<br/>
-    -sugestão é substituir pela moda ou mediana
->>- Identificar valores duplicados:
-# 2.2 Valores duplicados
-dadosloja_df.duplicated().sum()  # Total de linhas duplicadas
-
+         STOP HERE           
 >>- Conversão de tipos:
                                 # CODE TIPOS:
 # =====================================================================
@@ -348,6 +332,43 @@ dadosloja_df.columns
  ╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤ 
       #### **4. Análise Exploratória e Visualização**   (USAR ESTATÍSTICA)
     **Objetivo:** Investigar comportamento dos dados, validar hipóteses
+
+
+:::::::::::::::REVELA DESCOBERTAS(INSIGHTS) EXTRATÉGICAS:::  [DESCRIBE()]   [CORRELAÇÃO] 
+                                    (Usar a IA)
+
+≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈
+**Análise Descritiva:**          
+- print(df.describe(percentiles=[0.1, 0.9])) #- Apenas colunas numericas (Divide melhor o Dataframe para analisar)
+- print(df.describe(include='object')) #- Apenas colunas categóricas
+≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈
+- Variância
+.var()  
+
+# Describe()
+- print(df.describe(percentiles=[0.1, 0.9])) #- Divide melhor o Dataframe para analisar
+- print(df.describe(include='object')) #- Apenas colunas categóricas
+       PROMPT PARA O DESCRIBE:
+Analise esse describe dos dados para cada variavel com as seguintes perguntas: -O que está acontecendo? -Insights Práticos: Como melhorar esses Insights?
+
+
+      # Correlações em 2 ou mais colunas numéricas
+# OBS: Para usar correlação em colunas categoricas devemos tranforma-las em números (one-hot encoding)
+#(saber as relações reais entre variáveis para tomar decisões acertadas)
+#(Identifica nas colunas: padrões e tendências / relações ocultas / "correlação mostra relação, não prova causa" / 
+#  correlação muito alta (+0.9), podem estar dizendo a mesma coisa.)
+
+dadosloja_df[['Quantity', 'Price Per Unit', 'Total Spent']].corr()
+
+      # Correlações em 2 ou mais colunas categóricas
+# QuiQuadrado
+# Para descobrir se há relação entre categorias.
+# Testar independência entre duas variáveis categóricas (ex: método de pagamento x local).       
+
+
+
+
+
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
     **Preparação para Stakeholders:**
 - Análise dos gráficos (mesmo os mais simples)
