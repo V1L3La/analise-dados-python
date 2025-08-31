@@ -141,40 +141,55 @@ Obs: cada célula um comentário
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 PROJETO:    # Estudo de Caso Cafeteria
 
-      ## Entendimento do Negócio
+      ## PROJETO xxx
+      (figura gif)
 
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-      ## Problema da empresa: Perguntas a serem respondidas com os dados
+      #### Entendimento do Negócio
 
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-      #### FONTE DE DADOS
+      #### Problema da empresa(Perguntas a serem respondidas com os dados)
+      <br/>➤ 
 
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-      #### **1. Coleta de Dados**
+      #### Fonte de dados:
+       **Kaggle:**
+       **Descrição da da base:** <br/>
+       **Colunas da base de dados:**
+       | Colunas       | Descrição |
+       | ------------- | ------------- |
+       | Quantidade  | A quantidade do item comprado. |
+
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+      ##### 1. Coleta de Dados
 ≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈
-**Ferramentas e métodos:**
-- Bibliotecas:     pandas, numpy, matplotlib, seaborn,......
-- Carregamento de dados:        via CSV, Excel, APIs
+╠ Bibliotecas:     
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+╠ Carregamento de dados:        via CSV, Excel, APIs
         Ex: `pd.read_csv()`, `pd.read_excel()`, `requests.get()`
            Todos Carregamentos: (https://chat.qwen.ai/c/3008c6af-663b-4e34-9c1c-7f09485adcf6)
 
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-      #### **2. Análise Exploratória  Inicial (EDA - Exploratory Data Analysis)**
+      ##### **2. Análise Exploratória  Inicial (EDA - Exploratory Data Analysis)**
                        [DESCOBERTAS INICIAIS ANTES DO TRATAMENTO]
 ≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈
+##### Investigando os dados extraidos
 .sample(15) - Amostra aleatória de dados
 .head()` e `.tail()` - Visualização das primeiras/últimas linhas
 .columns
 .info() - Informações gerais sobre o dataset  (dá p ver os tipos das colunas) 
            - .dtypes - Tipos de dados das colunas
+ .describe(percentiles=[0.1, 0.9])   #- Apenas colunas numéricas
+ .describe(include='object')    #- Apenas colunas categóricas     
 
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
       #### **3. Análise da Qualidade dos Dados:**
 ≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈
-- **Valores únicos:**
-   - .value_counts() - Contagem de valores únicos
-
-   # identificar valores únicos de várias colunas separadamente
+   **Identificar valores únicos,duplicados e nulos**
 colunas = ['coluna1', 'coluna2', 'colunax']
 for coluna in colunas:
     print(f"\n=== Valores únicos na coluna '{coluna}' ===")
@@ -187,28 +202,40 @@ for coluna in colunas:
   - .isnull().sum().sum() - Total de valores nulos
   - .isna().mean() - Porcentagem de valores ausentes
 ≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈
-display(df)      # Tipo um power query do PBI
+display(df)      # Analisando cada coluna e suas quantiddes
 
  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ 
-      #### **4. Limpeza e Preparação dos Dados** 
-°°°°°°°°°°°°°°°°°°°° 
-   # **Visualizando valores ÚNICOS e ERRADOS no dataframe para serem tratados**
-   # identificar valores únicos de várias colunas separadamente
-colunas = ['coluna1', 'coluna2', 'colunax']
-for coluna in colunas:
-    print(f"\n=== Valores únicos na coluna '{coluna}' ===")
-    print(dadosloja_df[coluna].unique())
+      ##### **4. Preparação dos Dados e Limpeza** 
+                   -Tratamentos dos dados
+
+╠ Trocar nomes das colunas
+dadosloja_df.rename(columns={
+    "Transaction ID": "ID_Transação",
+    "Item": "Item"
+}, inplace=True)
+dadosloja_df.columns
+
+╠ Tratando TIPOS DE DADOS
+1- Visualizando os tipos:
+.info() - Informações gerais sobre o dataset  (dá p ver os tipos das colunas) 
+           - .dtypes - Tipos de dados das colunas
+2- Converter os tipos Inteiro, float e data
+°°°°°°°°°°°°°°°°°°°°
+dadosloja_df['Quantity'] = pd.to_numeric(dadosloja_df['Quantity'], errors='coerce').astype('Int64')
+dadosloja_df['Price Per Unit'] = pd.to_numeric(dadosloja_df['Price Per Unit'], errors='coerce').astype('float64')
+dadosloja_df['Transaction Date'] = pd.to_datetime(dadosloja_df['Transaction Date'], errors='coerce')
+.info()
 °°°°°°°°°°°°°°°°°°°°
 
-# Remoção de DADOS e COLUNAS IRRELEVANTES
-# Tratando valores com PADRONIZAÇÃO DE TEXTOS (ex: "cachorro", "Cachorro" → "cachorro")
-# Tratando valores NULOS no dataframe  (null = Não preencheu)
-# Tratando valores DUPLICADOS no dataframe
-# Tratando valores AUSENTES:                                        
+╠ Remoção de DADOS e COLUNAS IRRELEVANTES
+╠ Tratando valores com PADRONIZAÇÃO DE TEXTOS (ex: "cachorro", "Cachorro" → "cachorro")
+╠ Tratando valores NULOS no dataframe  (null = Não preencheu)
+╠ Tratando valores DUPLICADOS no dataframe
+╠ Tratando valores AUSENTES:                                        
    #Sugestão Preenchimento:         
         Dados numéricos: com moda, média, mediana, etc....
         Dados categóricos: com valores "Não informado", etc....
-**Tratando de Valores ERRADOS(Categóricos, numéricos e data) e NAN:**   (NAN = Não é número ou indefinido ou inválido)
+╠ Tratando de Valores ERRADOS(Categóricos, numéricos e data) e NAN:**   (NAN = Não é número ou indefinido ou inválido)
 # °°°°°°°°°°°°°°°°°°°°CODE ERRADOS(Categóricos, numéricos e data) e NAN :
 # =====================================================================
 # TRATAMENTO DE VALORES ERRADOS
@@ -261,6 +288,19 @@ for cada_coluna in todas_colunas:
 # °°°°°°°°°°°°°°°°°°°°FIM CODE ERRADOS(Categóricos, numéricos e data) e NAN                     
 
 
+##### Tratando as colunas numéricas Quantity, Price Per Unit e Total Spent      STOP HERE
+prompt:
+No dataframe dadosloja_df:
+-Se item=Coffee e Quantity=1 e Total Spent=2 então Price Per Unit= 2
+-Se item=Coffee e Quantity=2 e Total Spent=4 então Price Per Unit= 2
+-Se item=Coffee e Quantity=3 e Total Spent=6 então Price Per Unit= 2
+-Se item=Coffee e Quantity=4 e Total Spent=8 então Price Per Unit= 2
+-Se item=Coffee e Quantity=5 e Total Spent=10 então Price Per Unit= 2
+crie um novo dataframe  dadosloja2_df
+
+##### Confirmando se os tratamentos dos dados no dataframe foram realizados
+
+
 # Tratando valores OUTLIERS
 1- Prompt para IA: (Identificando)
 "Crie um histograma para visualizar outliers:
@@ -269,7 +309,7 @@ for cada_coluna in todas_colunas:
    -O código gerado tem que ser o menor possível
    -Quero saber a quantidade de outliers existentes"
 
-2- Tratando os Outliers
+2- Tratando os Outliers     (Fazer uma escolha)
 ✅ 1. Investigar antes de tratar                   # Mostrar os 10 maiores valores de coluna
 ✅ 2. Remover outliers (se forem erros)           ⚠️ Isso pode afetar a análise — use com cuidado. 
 ✅ 3. Substituir outliers por valores razoáveis    # Substituir outliers por mediana(Mantém as linhas e evita distorções)
@@ -278,59 +318,13 @@ for cada_coluna in todas_colunas:
       (ex: clientes VIP podem ser interessantes para segmentação, não para exclusão).
          # °°°°°°°°°°°°°°°°°°°°
          dadosloja_4tratazeros_df["Classificação Venda"] = dadosloja_4tratazeros_df["Total Spent"].apply(
-            lambda x: "Venda Alta" if x > Q3 + 1.5 * IQR else "Venda Normal"
-            )
+            lambda x: "Venda Alta" if x > Q3 + 1.5 * IQR else "Venda Normal")
                display(dadosloja_4tratazeros_df)
          # °°°°°°°°°°°°°°°°°°°°
 
 
-
-         STOP HERE           
->>- Conversão de tipos:
-                                # CODE TIPOS:
-# =====================================================================
-# CONVERSÃO DE TIPOS DE DADOS
-# =====================================================================
-print("🔄 Convertendo tipos de dados...")
-
-# Quantity deve ser inteiro (int)
-dadosloja_df['Quantity'] = pd.to_numeric(dadosloja_df['Quantity'], errors='coerce').astype('Int64')
-
-# Price Per Unit e Total Spent devem ser float
-dadosloja_df['Price Per Unit'] = pd.to_numeric(dadosloja_df['Price Per Unit'], errors='coerce').astype('float64')
-dadosloja_df['Total Spent'] = pd.to_numeric(dadosloja_df['Total Spent'], errors='coerce').astype('float64')
-
-# 2. Converter coluna de data para datetime
-dadosloja_df['Transaction Date'] = pd.to_datetime(dadosloja_df['Transaction Date'], errors='coerce')
-
-# =====================================================================
-# VERIFICAÇÕES FINAIS
-# =====================================================================
-
-dadosloja_df.info()
-
-# 3. Mostrar amostra dos dados convertidos
-print("\n📊 Amostra dos dados convertidos para confirmar as transformações de tipos:")
-dadosloja_df[['Payment Method','Item','Quantity', 'Price Per Unit', 'Total Spent', 'Location','Transaction Date']].sample(5)
-                                 # FIM CODE TIPOS:
-
-- Traduzir nome das colunas
-# Trocar nomes das colunas
-dadosloja_df.rename(columns={
-    "Transaction ID": "ID_Transação",
-    "Item": "Item",
-    "Quantity": "Quantidade",
-    "Price Per Unit": "Preço_por_Unidade",
-    "Total Spent": "Total_Gasto",
-    "Payment Method": "Método_Pagamento",
-    "Location": "Localização",
-    "Transaction Date": "Data_Transação"
-}, inplace=True)
-dadosloja_df.columns
-
-
- ╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤ 
-      #### **4. Análise Exploratória e Visualização**   (USAR ESTATÍSTICA)
+ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+      #### **4. Análise Exploratória Insights e Visualização**   (USAR ESTATÍSTICA)
     **Objetivo:** Investigar comportamento dos dados, validar hipóteses
 
 
@@ -365,9 +359,9 @@ dadosloja_df[['Quantity', 'Price Per Unit', 'Total Spent']].corr()
 # Para descobrir se há relação entre categorias.
 # Testar independência entre duas variáveis categóricas (ex: método de pagamento x local).       
 
+##### Respostas as perguntas da empresa
 
-
-
+##### Outras descobertas importantes Identificadas com os dados
 
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
     **Preparação para Stakeholders:**
