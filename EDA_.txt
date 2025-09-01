@@ -289,14 +289,11 @@ for cada_coluna in todas_colunas:
 
 
 ##### Tratando as colunas numéricas Quantity, Price Per Unit e Total Spent      STOP HERE
-prompt:
-No dataframe dadosloja_df:
+
+dadosloja_copia = dadosloja_df.copy()   # TRABALHANDO COM UMA CÓPIA
+prompt :
+tenho um dataframe no notebook do databrick usando python e usando pandas e preciso modificar alguns dados de certas colunas. como posso fazer isso? 
 -Se item=Coffee e Quantity=1 e Total Spent=2 então Price Per Unit= 2
--Se item=Coffee e Quantity=2 e Total Spent=4 então Price Per Unit= 2
--Se item=Coffee e Quantity=3 e Total Spent=6 então Price Per Unit= 2
--Se item=Coffee e Quantity=4 e Total Spent=8 então Price Per Unit= 2
--Se item=Coffee e Quantity=5 e Total Spent=10 então Price Per Unit= 2
-crie um novo dataframe  dadosloja2_df
 
 ##### Confirmando se os tratamentos dos dados no dataframe foram realizados
 
