@@ -288,7 +288,7 @@ for cada_coluna in todas_colunas:
 # °°°°°°°°°°°°°°°°°°°°FIM CODE ERRADOS(Categóricos, numéricos e data) e NAN                     
 
 
-##### Tratando as colunas numéricas Quantity, Price Per Unit e Total Spent      STOP HERE
+##### Tratando as colunas numéricas Quantity, Price Per Unit e Total Spent      
 
 dadosloja_copia = dadosloja_df.copy()   # TRABALHANDO COM UMA CÓPIA
 prompt :
@@ -321,62 +321,74 @@ tenho um dataframe no notebook do databrick usando python e usando pandas e prec
 
 
  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-      #### **4. Análise Exploratória Insights e Visualização**   (USAR ESTATÍSTICA)
+      #### **5. Análise Exploratória Insights e Visualização**   (USAR ESTATÍSTICA)
     **Objetivo:** Investigar comportamento dos dados, validar hipóteses
 
 
 :::::::::::::::REVELA DESCOBERTAS(INSIGHTS) EXTRATÉGICAS:::  [DESCRIBE()]   [CORRELAÇÃO] 
                                     (Usar a IA)
 
+>> Desvio padrão: mostra o quanto os valores de uma coluna variam em média em relação à média.
+>> Variância: mede a dispersão dos dados em torno da média.
+>> Correlação: indica a força e a direção da relação entre duas variáveis (se crescem juntas, caem juntas ou não têm relação).
+
 ≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈
-**Análise Descritiva:**          
-- print(df.describe(percentiles=[0.1, 0.9])) #- Apenas colunas numericas (Divide melhor o Dataframe para analisar)
-- print(df.describe(include='object')) #- Apenas colunas categóricas
+# Describe
+**Análise Descritiva:**
+▌▌▌ Prompt para o describe:   Analise esses dados de describe respondendo as seguintes perguntas: 
+                              -O que está acontecendo? 
+                              -Insights Práticos: 
+                              -Como melhorar esses Insights?          
+print(df.describe(percentiles=[0.1, 0.9])) #- Apenas colunas numericas (Divide melhor o Dataframe para analisar)
+print(df.describe(include='object')) #- Apenas colunas categóricas
+
+# Variância
+▌▌▌ Prompt:   Analise esses dados de variância respondendo as seguintes perguntas: 
+                              -O que está acontecendo? 
+                              -Insights Práticos: 
+                              -Como melhorar esses Insights?  
+▌▌▌ Prompt:  Como calcular a variancia de x colunas numérica de um dataframe em python?
+variancias_selecionadas = df[['a', 'b', 'c']].var()
+print(variancias_selecionadas) 
+
 ≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈
-- Variância
-.var()  
-
-# Describe()
-- print(df.describe(percentiles=[0.1, 0.9])) #- Divide melhor o Dataframe para analisar
-- print(df.describe(include='object')) #- Apenas colunas categóricas
-       PROMPT PARA O DESCRIBE:
-Analise esse describe dos dados para cada variavel com as seguintes perguntas: -O que está acontecendo? -Insights Práticos: Como melhorar esses Insights?
-
-
-      # Correlações em 2 ou mais colunas numéricas
-# OBS: Para usar correlação em colunas categoricas devemos tranforma-las em números (one-hot encoding)
-#(saber as relações reais entre variáveis para tomar decisões acertadas)
-#(Identifica nas colunas: padrões e tendências / relações ocultas / "correlação mostra relação, não prova causa" / 
-#  correlação muito alta (+0.9), podem estar dizendo a mesma coisa.)
-
+# Correlações:    [[ corr() funciona apenas para numéricas. ]]
+  
+  1- NUMÉRICAS:
 dadosloja_df[['Quantity', 'Price Per Unit', 'Total Spent']].corr()
+  
+  2- CATEGÓRICAS:
+Para usar correlação em colunas categoricas devemos tranforma-las em números (one-hot encoding)
+One-Hot Encoding       (bom para regressão, mas gera muitas colunas)
+Label Encoding         (mais simples, mas pode distorcer se a variável não tiver ordem)
 
-      # Correlações em 2 ou mais colunas categóricas
-# QuiQuadrado
-# Para descobrir se há relação entre categorias.
-# Testar independência entre duas variáveis categóricas (ex: método de pagamento x local).       
+     Porque usar? 
+     - Para saber as relações reais entre variáveis para tomar decisões acertadas
+     - Identifica nas colunas: padrões e tendências / relações ocultas / "correlação mostra RELAÇÃO, não prova CAUSA" / 
+         1 → relação forte e positiva (quando uma aumenta, a outra também aumenta).
+        -1 → relação forte e negativa (quando uma aumenta, a outra diminui).
+         0 → pouca ou nenhuma relação.  
+▌▌▌ Prompt:   Analise esses dados de variância respondendo as seguintes perguntas: 
+                              -O que está acontecendo? 
+                              -Insights Práticos: 
+                              -Como melhorar esses Insights? 
+# °°°°°°°°°°°°°°°°°°°°
+# Exemplo: transformar colunas categóricas em dummies
+dados_dummies = pd.get_dummies(dadosloja_df3[['Item','Payment Method','Location']], drop_first=True)
+# Calcular correlação
+corr_categoricas = dados_dummies.corr()
+corr_categoricas
+# °°°°°°°°°°°°°°°°°°°°
+  
+  3- DATAS
+não entram direto na correlação, mas você pode extrair features úteis, por exemplo:
+Depois calcula a correlação usando Ano, Mes, DiaSemana.
 
-##### Respostas as perguntas da empresa
 
-##### Outras descobertas importantes Identificadas com os dados
 
-■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-    **Preparação para Stakeholders:**
-- Análise dos gráficos (mesmo os mais simples)
-- Busca por problemas e padrões
-- Comunicação de insights
 
-    **Métodos de Visualização:** 
-- Pandas plotting (limitado) - Matplotlib (básico) - Seaborn (recomendado) - Plotly (interativo)
 
-    **Tipos de Gráficos:**
-- `barplot` - Gráfico de barras  - `histplot` - Histograma - `boxplot` - Boxplot
-             - `plotly` - Gráficos interativos (bar, pie, donut)
-■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-** Comportamento dos dados:**
-.sample(5)
-.describe(percentiles=[0.1, 0.9])    # Faça analise profunda das colunas de números
-- variância
+
 
       Testes de hipótese             [Validar suposições]
 👉 Servem para verificar se uma afirmação sobre os dados é verdadeira ou não.
@@ -400,14 +412,51 @@ Testar independência entre duas variáveis categóricas (ex: método de pagamen
 
 
 
+
+
+
+
+##### Respostas as perguntas da empresa
+# Problema da empresa (Perguntas a serem respondidas com os dados)
+
+[x] Falta de visibilidade clara sobre:
+
+➤ **[x]** Quais produtos com maior impacto no faturamento.?<br/>
+➤ **[x]** Por que certos produtos têm baixa venda?<br/>
+➤ **[x]** classificar os produtos de baixo, médio e alto venda.<br/>
+➤ **[x]** quais dias tiveram mais vendas.<br/>
+➤ **[x]** O dia que menos vende na semana <br/>
+➤ **[x]** quanto cada cliente gasta em média.
+
+
+##### Outras descobertas importantes Identificadas com os dados
+
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+    **Preparação para Stakeholders:**
+- Análise dos gráficos (mesmo os mais simples)
+- Busca por problemas e padrões
+- Comunicação de insights
+
+    **Métodos de Visualização:** 
+- Pandas plotting (limitado) - Matplotlib (básico) - Seaborn (recomendado) - Plotly (interativo)
+
+    **Tipos de Gráficos:**
+- `barplot` - Gráfico de barras  - `histplot` - Histograma - `boxplot` - Boxplot
+             - `plotly` - Gráficos interativos (bar, pie, donut)
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+
+
+
+
+
  ╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤ 
-      #### **5. Modelagem Estatística (opcional)**
+      #### **6. Modelagem Estatística (opcional)**
 - Análises estatísticas avançadas
 - Modelagem preditiva (se aplicável)
 
 
  ╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤ 
-      #### **6. Interpretação e Comunicação**
+      #### **7. Interpretação e Comunicação**
 **Dashboard Interativo:**
 - Streamlit para criação de dashboards
 - Estrutura de página: título, ícone, layout
