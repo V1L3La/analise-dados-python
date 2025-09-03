@@ -351,7 +351,7 @@ print(df.describe(include='object')) #- Apenas colunas categóricas
 variancias_selecionadas = df[['a', 'b', 'c']].var()
 print(variancias_selecionadas) 
 
-≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈
+≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈ .
 # Correlações:    [[ corr() funciona apenas para numéricas. ]]
   
   1- NUMÉRICAS:
