@@ -3,40 +3,24 @@
 ssssss
 Markdown I: http://cursos.leg.ufpr.br/prr/capMarkdown.html 
 Markdown II: https://pt.stackoverflow.com/help/formatting 
-=====================================================================================
+
+==============================ESTRUTURA DE PROJETO=======================================================
 🌐 1. FONTE DE DADOS 
 
 KAGGLE:  https://www.kaggle.com/datasets/ahmedmohamed2003/cafe-sales-dirty-data-for-cleaning-training/data
 
 DESCRIÇÃO DA BASE: 
-Um conjunto de dados simulado com transações de vendas em cafés, contendo informações sobre itens vendidos, quantidades, preços, métodos de pagamento, localização e datas.
 
 📋 2.COLUNAS DA BASE DE DADOS:
 
-Item -                   O nome do item comprado.
-Quantidade -             A quantidade do item comprado.
-Preço por unidade -      O preço de uma única unidade do item.
-Total gasto -            O valor total gasto na transação.
-Método de pagamento -    O método de pagamento utilizado.
-Localização-             O local onde a transação ocorreu.
-Data da transação -      A data da transação.
 =====================================================================================
 ⚠️ 3. Problema / Dor Identificada (Análise de Negócio)
 
 ❓ Qual é o problema real?                (RESOLVER ESSA DOR OU PROBLEMA)
-   "As vendas estão caindo em determinadas lojas, mas não sabemos por quê. 
-    Há suspeita de que o preço dos itens esteja desalinhado com o mercado, 
-    ou que certos produtos não estejam sendo bem-sucedidos." 
-
+   
 🔍 Causa Raiz (HIPÓTESES INICIAIS)       (ADAPTAR ESSAS HIPÓTESES RELACIONADO AO PROBLEMA PROPOSTO)
    (Exploração de dAdos EXPLANATÓRIA para investigar)
-Com base no entendimento do negócio, levantei as seguintes hipóteses:
-Ex:
-➤ Produtos com preço alto têm baixa quantidade vendida.
-➤ Alguns locais têm desempenho muito abaixo da média.
-➤ Métodos de pagamento mais populares são subutilizados (ex: Pix).
-➤ Existem inconsistências nos dados (ex: Total gasto ≠ Quantidade × Preço por unidade) 
-   que afetam a confiabilidade das análises.
+Com base no entendimento do negócio, levantar hipóteses:
          
          ✅ Objetivo: Validar essas hipóteses com análise exploratória e 
                        limpeza de dados → gerar insights acionáveis. 
@@ -44,55 +28,20 @@ Ex:
 🛠️ 4.Entendimento do Negócio
 
 1. Entendimento do Negócio
-
-🔍 Contexto Empresarial
-   O cenário é o de uma rede de cafés com múltiplas unidades distribuídas em diferentes localizações (centro urbano, bairros residenciais, shoppings). O modelo de negócio se baseia em:
-➤ Vendas diárias de produtos com margens variáveis.
-➤ Alta rotatividade de clientes em horários específicos (manhã, tarde).
-➤ Diversificação de ofertas: bebidas, pães, lanches, combos.
-➤ Uso de múltiplos canais de pagamento (dinheiro, cartão ), com tendência crescente para meios digitais.
-
+🎯 5. C Contexto Empresarial
 📈 Metas Estratégicas do Negócio
-Com base nesse contexto, identifiquei as seguintes metas operacionais e comerciais:
-➤ Aumentar a receita média por loja (sem aumentar custos fixos).
-➤ Melhorar a performance de produtos com baixa rotação.
-➤ Otimizar o mix de produtos com base no comportamento do cliente.
-➤ Aumentar a adesão a métodos de pagamento digitais (Pix, cartão) para reduzir risco de perda de dinheiro em caixa.
-➤ Reduzir desperdícios e melhorar a gestão de estoque (indiretamente impactado pela previsibilidade de vendas).
-
 🧩 Problema Central (Negócio vs. Dados)
-Apesar de haver dados de transações, há falta de visibilidade clara sobre:
-➤ Quais produtos realmente geram lucro líquido (considerando custo de produção)?
-➤ Qual localização tem maior potencial de crescimento?
-➤ Por que certos produtos têm baixa demanda mesmo com preço competitivo?
-👉 Isso gera decisões baseadas em intuição, não em dados — o que pode levar a:
-➤ Sobrecarga de estoque em produtos pouco vendidos.
-➤ Preços desalinhados com a percepção do cliente.
-➤ Falta de foco em promoções eficazes.
-
-
 
 2. Coleta e Limpeza de Dados (Data Wrangling)
-Ex:
-  ➤ Verificação de valores ausentes (NaN) em colunas críticas.
-  ➤ Correção de tipos de dados (ex: Data da transação como string → datetime).
-  ➤ Padronização de nomes de produtos e métodos de pagamento.
-  ➤ Detecção e correção de inconsistências no Total gasto (comparação com Quantidade × Preço por unidade).
-  ➤ Remoção de duplicatas e outliers extremos.
 
 3. Exploração de Dados (EDA – Exploratory Data Analysis)
-  ➤ Distribuição de vendas por dia/semana/mês.
-  ➤ Top 10 produtos mais vendidos (por quantidade e receita).
-  ➤ Receita média por localização e método de pagamento.
-  ➤ Relação entre preço unitário e quantidade vendida.
-  ➤ Análise temporal: sazonalidade de vendas?
-
+  
 4. Validação de Hipóteses
 ➤ Produtos caros têm baixa demanda           ✅ Verdadeiro: "Espresso" tem alto preço e baixa quantidade vendida
 ➤ Lojas em "Shopping" têm melhor desempenho  ✅ Verdadeiro: Receita média +40% em comparação com "Centro"
 ➤ Pix é pouco usado                          ❌ Falso: Pix representa 58% das transações – o mais utilizado
 
-5. Geração de Insights(revelação) & Propostas de Solução  
+🔍 5. Geração de Insights(revelação) & Propostas de Melhorias  
 Ex:
 ✨ Insight 1: O produto "Cappuccino Premium" tem alto preço (US$ 6,50) e baixa quantidade vendida (média de 1,2/unidade).
 ➤ Recomendação: Reduzir o preço em 15% ou criar um combo com croissant para aumentar atratividade. 
@@ -101,7 +50,7 @@ Ex:
 ✨ Insight 3: O método de pagamento "Dinheiro" é usado em apenas 8% das transações, apesar de ser o preferido por idosos.
 ➤ Recomendação: Oferecer cupom de desconto para quem pagar em dinheiro (incentivo ao uso). 
 =====================================================================================
-🎯 5. Conclusão e Valor Agregado
+🎯 6. Conclusão e Valor Agregado
 
 Este projeto demonstra minha capacidade de:
 ➤ Transformar dados sujos em informações valiosas.
@@ -320,8 +269,8 @@ tenho um dataframe no notebook do databrick usando python e usando pandas e prec
          # °°°°°°°°°°°°°°°°°°°°
 
 
- ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-      #### **5. Análise Exploratória Insights e Visualização**   (USAR ESTATÍSTICA)
+ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  ARRUMAR
+      #### **5. Análise Exploratória Insights e Visualização**   (USAR ESTATÍSTICA)     
     **Objetivo:** Investigar comportamento dos dados, validar hipóteses
 
 Tratamento de numeros e datas para não influenciar nas estatisticas:
@@ -398,47 +347,8 @@ Depois calcula a correlação usando Ano, Mes, DiaSemana.
 
 
 .
-
-      Testes de hipótese             [Validar suposições]
-👉 Servem para verificar se uma afirmação sobre os dados é verdadeira ou não.
-Exemplo: será que o gasto médio com Sandwich é igual ao gasto médio com Juice?
-
-      Variância        [em relação a média]
-medida de quão dispersos os dados estão em relação à média.
-Entender se os valores são consistentes ou muito variáveis.
-Alta variância indica variação grande — pode ser sinal de outliers. 
-
-      Probabilidade
-Para prever comportamentos futuros.
-Calcular a chance de um evento ocorrer (ex: probabilidade de um produto ter preço > R$ 5).
-
-      QuiQuadrado
-Para descobrir se há relação entre categorias.
-Testar independência entre duas variáveis categóricas (ex: método de pagamento x local).
-
-
-
-
-
-
-
-
-
-
-##### Respostas as perguntas da empresa
-# Problema da empresa (Perguntas a serem respondidas com os dados)
-
-[x] Falta de visibilidade clara sobre:
-
-➤ **[x]** Quais produtos com maior impacto no faturamento.?<br/>
-➤ **[x]** Por que certos produtos têm baixa venda?<br/>
-➤ **[x]** classificar os produtos de baixo, médio e alto venda.<br/>
-➤ **[x]** quais dias tiveram mais vendas.<br/>
-➤ **[x]** O dia que menos vende na semana <br/>
-➤ **[x]** quanto cada cliente gasta em média.
-
-
-##### Outras descobertas importantes Identificadas com os dados
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  ARRUMAR   STOP HERE
+      #### **6. Insights(revelação dos dados disponibilizados) & Propostas de Solução
 
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
     **Preparação para Stakeholders:**
@@ -454,18 +364,53 @@ Testar independência entre duas variáveis categóricas (ex: método de pagamen
              - `plotly` - Gráficos interativos (bar, pie, donut)
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
+##### 1- Respostas as perguntas da empresa
+# Problema da empresa (Perguntas a serem respondidas com os dados)
+➤ **[x]** Falta de visibilidade clara sobre:
+➤ **[x]** Quais produtos com maior impacto no faturamento.?<br/>
+➤ **[x]** Por que certos produtos têm baixa venda?<br/>
+➤ **[x]** classificar os produtos de baixo, médio e alto venda.<br/>
+➤ **[x]** quais dias tiveram mais vendas.<br/>
+➤ **[x]** O dia que menos vende na semana <br/>
+➤ **[x]** quanto cada cliente gasta em média.
+
+
+##### 2- Outras descobertas importantes Identificadas com os dados
+
+1- ANALIZAR OS DADOS COM IA:
+(CELULA 47)
+Analizar describe, variância e correlação das colunas gerado no código
+
+2-STORYTELLING   (gráficos + contexto)
+✅ Elementos de uma boa Data Storytelling
+Personagem       → Quem está envolvido? (ex: cliente, loja, produto)
+Conflito         → Qual é o problema? (ex: vendas caindo)
+Clímax           → Onde está a descoberta? (ex: correlação entre preço e quantidade)
+Resolução        → O que fazer? (ex: ajustar preço, promover em shoppings)
+Visualização     → Gráficos, cores, títulos que guiam a leitura
+
+✅ Exemplo de estrutura:
+📌 Título: "Café é o produto mais vendido, mas tem lucro baixo"
+📊 Gráfico: Barra mostrando quantidade vs. margem de lucro
+🗣️ Narrativa:
+"O café lidera em vendas, mas por ser barato, gera pouco lucro. Já o smoothie, apesar de vender menos, tem margem 3x maior. Investir em smoothies pode aumentar o lucro sem aumentar o volume de vendas." 
+
+Salve a (celula 47) num arquivo docx e use o chatgpt para criar o Data Steretelling
+Prompt1: "Crie um Storytelling com arquivo anexado usando uma narrativa clara e envolvente que ajude as pessoas as entenderem o que está acontecendo e a tomarem decisões."
+Prompt2: "salve em um arquivo powerpoint esse Data Storytelling" 
 
 
 
 
- ╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤ 
-      #### **6. Modelagem Estatística (opcional)**
+
+ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+      #### **7. Modelagem Estatística (opcional)**
 - Análises estatísticas avançadas
 - Modelagem preditiva (se aplicável)
 
 
- ╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤ 
-      #### **7. Interpretação e Comunicação**
+ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ 
+      #### **8. Interpretação e Comunicação**
 **Dashboard Interativo:**
 - Streamlit para criação de dashboards
 - Estrutura de página: título, ícone, layout
@@ -475,8 +420,8 @@ Testar independência entre duas variáveis categóricas (ex: método de pagamen
 - Gráficos e visualizações
 
 
- ╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤ 
-      #### **7. Deployment**
+ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+      #### **9. Deployment**
 **Publicação Online:**
 - Streamlit Sharing (gratuito)
 - GitHub Pages
@@ -486,7 +431,37 @@ Testar independência entre duas variáveis categóricas (ex: método de pagamen
 - `requirements.txt` (bibliotecas)
 - Dados necessários
 
- ╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤ 
+ 
+
+  
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ARRUMAR  
+🎯 10. Conclusão e Valor Agregado
+
+Este projeto demonstra minha capacidade de:
+➤ Transformar dados sujos em informações valiosas.
+➤ Usar Python no Databricks para análise escalável.
+➤ Criar um fluxo completo: desde a limpeza até a tomada de decisão com base em evidências.
+➤ Traduzir dados em insights acionáveis para o negócio.
+         🏁 Resultado final: Uma proposta de melhoria no mix de produtos, estratégias de precificação 
+                             e campanhas promocionais baseadas em dados reais. 
+
+📎 Anexos (Sugestões para o portfólio)
+  ➤ Notebook Databricks (link público ou exportado)
+  ➤ Gráficos gerados (seguindo boas práticas de visualização)
+  ➤ Relatório resumido em PDF
+  ➤ Apresentação (PowerPoint ou Canva) para mostrar o projeto para entrevistas 
+
+✉️ Como apresentar isso?
+Use esse conteúdo como base para:
+  ➤ Um GitHub com o código (notebooks Databricks + README explicativo).
+  ➤ Um LinkedIn post mostrando o processo e os resultados.
+  ➤ Uma apresentação técnica em entrevistas para mostrar sua jornada analítica.  
+
+
+
+
+
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
       #### **Fontes e Referências:**
 - Imersão Dados com Python: [Página da imersão](https://cursos.alura.com.br/imersoes/aulas/aula-04-c184)
 - Notebook: [GitHub do Alura](https://github.com/guilhermeonrails/idcp-alura/blob/A7X3D9/aulas.ipynb)
@@ -494,20 +469,5 @@ Testar independência entre duas variáveis categóricas (ex: método de pagamen
 - Código no Github: [Repositório Alura](https://github.com/almeidamarcell/imersao-dados-python-alura-2025)
 - Dash publicado: [Dashboard de Salários](https://dashboard-salarios-dados.streamlit.app/)
 - Dash publicado (Código): [Template Streamlit](https://github.com/amrrs/streamlit-dashboard-template/blob/main/dashboard.py)
-
- ╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤╤ 
-      #### **Principais Melhorias:**
-- Clareza temporal - Passo a passo lógico
-- Organização temática - Agrupamento por tipo de atividade
-- Hierarquia de importância - Etapas principais primeiro
-- Evitar duplicação - Evitar repetição de métodos em múltiplas etapas
-- Essa organização ajuda a entender melhor o fluxo do processo completo de análise de dados.
-
-
-
-
-
-
-
 
 
