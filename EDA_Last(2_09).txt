@@ -244,8 +244,11 @@ prompt :
 tenho um dataframe no notebook do databrick usando python e usando pandas e preciso modificar alguns dados de certas colunas. como posso fazer isso? 
 -Se item=Coffee e Quantity=1 e Total Spent=2 então Price Per Unit= 2
 
-##### Confirmando se os tratamentos dos dados no dataframe foram realizados
+Tratamento de numeros e datas para não influenciar nas estatisticas:
+NAN(numeros) = NAT(data)Tratamento de numeros e datas para não influenciar nas estatisticas:
+NAN(numeros) = NAT(data)
 
+##### Confirmando se os tratamentos dos dados no dataframe foram realizados
 
 # Tratando valores OUTLIERS
 1- Prompt para IA: (Identificando)
@@ -269,19 +272,61 @@ tenho um dataframe no notebook do databrick usando python e usando pandas e prec
          # °°°°°°°°°°°°°°°°°°°°
 
 
- ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  ARRUMAR
-      #### **5. Análise Exploratória Insights e Visualização**   (USAR ESTATÍSTICA)     
-    **Objetivo:** Investigar comportamento dos dados, validar hipóteses
 
-Tratamento de numeros e datas para não influenciar nas estatisticas:
-NAN(numeros) = NAT(data)
+##### Investigando o comportamento dos dados numéricos e categóricos para descobrir Insights
+# ANALISANDO OS DADOS PARA DESCOBRIR O QUE ESTÁ ACONTECENDO E COMO MELHORAR 
+    print(dadosloja_df3.describe(percentiles=[0.1, 0.9])) 
+# CHECANDO SE TODOS OS TRATAMENTOS FORAM FEITOS
+  # Exibir os valores únicos de cada coluna
+for col in dadosloja_df3.columns:
+    print(f"Valores únicos na coluna '{col}':")
+    print(dadosloja_df3[col].unique())
+    print("\n")
 
-:::::::::::::::REVELA DESCOBERTAS(INSIGHTS) EXTRATÉGICAS:::  [DESCRIBE()]   [CORRELAÇÃO] 
-                                    (Usar a IA)
+
+
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ 
+      ##### **5. Insights(revelação dos dados disponibilizados) & Propostas de Solução
+
+:::::::::::::::REVELA DESCOBERTAS(INSIGHTS) EXTRATÉGICAS:::  
+
+ 1- Responder as perguntas da empresa com esses dados tratados:                                  
+🧩 A empresa precisa que algumas perguntas sejam respondidas:
+ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+    **Preparação para Stakeholders:**
+- Análise dos gráficos (mesmo os mais simples)
+- Busca por problemas e padrões
+- Comunicação de insights
+
+    **Métodos de Visualização:** 
+- Pandas plotting (limitado) - Matplotlib (básico) - Seaborn (recomendado) - Plotly (interativo)
+
+    **Tipos de Gráficos:**
+    matplotlib            - https://matplotlib.org/stable/gallery/index.html
+    Plotly(Interativo)    - https://plotly.com/python/ 
+    Seaborn               - https://seaborn.pydata.org/examples/scatterplot_categorical.html 
+
+       Qual gráfico usar?
+Ver distribuição                  - Histograma, Boxplot, Violin, swarmplot
+Comparar categorias               - Barras, Count Plot
+Relações entre partes e o todo*   - Mapas de árvore*
+Mostrar tendência                 - Linhas, Área
+Mostrar proporção                 - Pizza, Treemap*
+Mostrar múltiplas relações        - Pair Plot, Heatmap 
+Ver relação entre variáveis       - Scatter, Heatmap 
+Relação 2 variáveis numéricas     - dispersão(Scatter Plot)                   (P Correlação)     
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+##### 1- Respostas as perguntas da empresa   (FAZER GRÁFICOS)
+# Problema da empresa (Perguntas a serem respondidas com os dados)
+
+
+
+2-Analise profunda dos dados:    [DESCRIBE()]   [VARIÂNCIA]  [CORRELAÇÃO]      (Usar a IA)
 
 >> Desvio padrão: mostra o quanto os valores de uma coluna variam em média em relação à média.
 >> Variância: mede a dispersão dos dados em torno da média.
 >> Correlação: indica a força e a direção da relação entre duas variáveis (se crescem juntas, caem juntas ou não têm relação).
+
 
 ≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈
 # Describe
@@ -343,45 +388,18 @@ não entram direto na correlação, mas você pode extrair features úteis, por 
 Depois calcula a correlação usando Ano, Mes, DiaSemana.
 
 
-
-
-
-.
-░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  ARRUMAR   STOP HERE
-      #### **6. Insights(revelação dos dados disponibilizados) & Propostas de Solução
-
-■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-    **Preparação para Stakeholders:**
-- Análise dos gráficos (mesmo os mais simples)
-- Busca por problemas e padrões
-- Comunicação de insights
-
-    **Métodos de Visualização:** 
-- Pandas plotting (limitado) - Matplotlib (básico) - Seaborn (recomendado) - Plotly (interativo)
-
-    **Tipos de Gráficos:**
-- `barplot` - Gráfico de barras  - `histplot` - Histograma - `boxplot` - Boxplot
-             - `plotly` - Gráficos interativos (bar, pie, donut)
-■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-
-##### 1- Respostas as perguntas da empresa
-# Problema da empresa (Perguntas a serem respondidas com os dados)
-➤ **[x]** Falta de visibilidade clara sobre:
-➤ **[x]** Quais produtos com maior impacto no faturamento.?<br/>
-➤ **[x]** Por que certos produtos têm baixa venda?<br/>
-➤ **[x]** classificar os produtos de baixo, médio e alto venda.<br/>
-➤ **[x]** quais dias tiveram mais vendas.<br/>
-➤ **[x]** O dia que menos vende na semana <br/>
-➤ **[x]** quanto cada cliente gasta em média.
-
-
-##### 2- Outras descobertas importantes Identificadas com os dados
+##### Outras descobertas importantes Identificadas com os dados
 
 1- ANALIZAR OS DADOS COM IA:
 (CELULA 47)
 Analizar describe, variância e correlação das colunas gerado no código
 
-2-STORYTELLING   (gráficos + contexto)
+
+.
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  ARRUMAR   STOP HERE
+      #### **6. DATA STORYTELLYNG
+
+STORYTELLING   (gráficos + contexto)
 ✅ Elementos de uma boa Data Storytelling
 Personagem       → Quem está envolvido? (ex: cliente, loja, produto)
 Conflito         → Qual é o problema? (ex: vendas caindo)
@@ -395,7 +413,7 @@ Visualização     → Gráficos, cores, títulos que guiam a leitura
 🗣️ Narrativa:
 "O café lidera em vendas, mas por ser barato, gera pouco lucro. Já o smoothie, apesar de vender menos, tem margem 3x maior. Investir em smoothies pode aumentar o lucro sem aumentar o volume de vendas." 
 
-Salve a (celula 47) num arquivo docx e use o chatgpt para criar o Data Steretelling
+Salve a (celula 47 - describe, variancia e correlação) num arquivo docx e use o chatgpt para criar o Data Steretelling
 Prompt1: "Crie um Storytelling com arquivo anexado usando uma narrativa clara e envolvente que ajude as pessoas as entenderem o que está acontecendo e a tomarem decisões."
 Prompt2: "salve em um arquivo powerpoint esse Data Storytelling" 
 
