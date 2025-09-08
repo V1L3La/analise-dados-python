@@ -133,8 +133,9 @@ import seaborn as sns
 .info() - Informações gerais sobre o dataset  (dá p ver os tipos das colunas) 
            - .dtypes - Tipos de dados das colunas
  .describe(percentiles=[0.1, 0.9])   #- Apenas colunas numéricas
- .describe(include='object')    #- Apenas colunas categóricas     
+ .describe(include='object')    #- Apenas colunas categóricas  
 
+ dadosloja_df4['Total Spent'].describe(percentiles=[0.1, 0.9]) 
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
       #### **3. Análise da Qualidade dos Dados:**
 ≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈
@@ -398,6 +399,25 @@ Analizar describe, variância e correlação das colunas gerado no código
 .
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  ARRUMAR   STOP HERE
       #### **6. DATA STORYTELLYNG
+
+PROMPT:
+Crie um Data storytelling com os criterios abaixo usando o conteudo disponibilizado: 
+Regras: 
+- que seja clara, sequencial, e didática e ideal para ensinar 
+- que Identifique o problema central ou a mensagem principal. 
+- Evite excesso de dados e distrações — escolha um foco claro. 
+- Busque responder à pergunta central com evidências. 
+- Use comparações, tendências, correlações, segmentações. 
+- Conecte os dados com uma história que faz sentido lógico e emocional. 
+- Apresente o contexto, os dados e a conclusão, com uma progressão. 
+- Inclua “pontos de virada” nos dados que ajudem a prender atenção. 
+- Use linguagem simples e acessível ao público.
+Conteudo:
+
+
+
+
+
 
 STORYTELLING   (gráficos + contexto)
 ✅ Elementos de uma boa Data Storytelling
