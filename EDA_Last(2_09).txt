@@ -284,10 +284,12 @@ for col in dadosloja_df3.columns:
     print(dadosloja_df3[col].unique())
     print("\n")
 
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ 
+      ##### **5. Modelagem de Dados (fatos, dimensões, relacionamentos)
 
 
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ 
-      ##### **5. Insights(revelação dos dados disponibilizados) & Propostas de Solução
+      ##### **6. Insights(revelação dos dados disponibilizados) & Propostas de Solução
 
 :::::::::::::::REVELA DESCOBERTAS(INSIGHTS) EXTRATÉGICAS:::  
 
@@ -398,7 +400,7 @@ Analizar describe, variância e correlação das colunas gerado no código
 
 .
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  ARRUMAR   STOP HERE
-      #### **6. DATA STORYTELLYNG
+      #### **7. DATA STORYTELLYNG
 
 PROMPT:
 Crie um Data storytelling com os criterios abaixo usando o conteudo disponibilizado: 
@@ -448,7 +450,7 @@ Prompt2: "salve em um arquivo powerpoint esse Data Storytelling"
 
 
  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ 
-      #### **8. Interpretação e Comunicação**
+      #### **8. Interpretação e Comunicação (opcional)** 
 **Dashboard Interativo:**
 - Streamlit para criação de dashboards
 - Estrutura de página: título, ícone, layout
@@ -459,7 +461,7 @@ Prompt2: "salve em um arquivo powerpoint esse Data Storytelling"
 
 
  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-      #### **9. Deployment**
+      #### **9. Deployment (opcional)**
 **Publicação Online:**
 - Streamlit Sharing (gratuito)
 - GitHub Pages
