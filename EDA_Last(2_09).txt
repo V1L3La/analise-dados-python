@@ -425,6 +425,14 @@ Resolução:
 MODELO DE APRESENTAÇÃO: https://www.canva.com/s/templates?query=apresenta%C3%A7%C3%A3o+comercial 
 
 
+1- colocar no github:     Tudo: https://github.com/V1L3La/Portifolio_Analise-_de-_Dados/tree/main
+-base de dados 
+-O ipynb  (Do databricks exporta como ipython )    https://github.com/V1L3La/Portifolio_Analise-_de-_Dados/blob/main/PROJETO%20CAFETERIA%20(Em%20Python%20no%20databricks).ipynb
+-Storytelling    https://github.com/V1L3La/Portifolio_Analise-_de-_Dados/blob/main/Storytelling%20-%20Cafeteria.pptx 
+
+2- no canvas atualizar o portifólio
+
+3- Linkedin       https://t2ste232.my.canva.site/site-para-link-na-bio-moda-simples-e-escuro-em-preto-e-branco 
 
 
  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
