@@ -400,7 +400,7 @@ Analizar describe, variância e correlação das colunas gerado no código
 
 .
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  
-      #### **7. DATA STORYTELLYNG   (gráficos + contexto)
+      #### **7. DATA STORYTELLING   (gráficos + contexto)
 
 
 ====================================================================================  PROMPT
